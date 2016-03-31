@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/task/spring-context-4.2.xsd 
+                           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd 
+                           http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.2.xsd
+                           http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.0.xsd
+                           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+
+	<!-- Basic Configurations -->
+	<context:annotation-config />
+
+	<context:component-scan base-package="la.foton.dpjmanager.controller" />
+	<context:component-scan base-package="la.foton.dpjmanager.entidades" />
+	<context:component-scan base-package="la.foton.dpjmanager.dao" />
+	<context:component-scan base-package="la.foton.dpjmanager.service" />
+	<!-- Configurações Spring MVC -->
+	<mvc:annotation-driven />
+	<mvc:default-servlet-handler />
+	<mvc:interceptors>
+		<!-- workaround to fix IE8 problem -->
+		<bean id="webContentInterceptor"
+			class="org.springframework.web.servlet.mvc.WebContentInterceptor">
+			<property name="cacheSeconds" value="0" />
+			<property name="useExpiresHeader" value="true" />
+			<property name="useCacheControlHeader" value="true" />
+			<property name="useCacheControlNoStore" value="true" />
+		</bean>
+	</mvc:interceptors>
+	<!-- Mensagens -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="WEB-INF/mensagens" />
+		<property name="defaultEncoding" value="UTF-8" />
+		<property name="useCodeAsDefaultMessage" value="true" />
+	</bean>
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.FixedLocaleResolver">
+		<property name="defaultLocale" value="pt_BR" />
+	</bean>
+	<bean id="contentNegotiationManager"
+		class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+		<property name="favorPathExtension" value="false" />
+		<property name="favorParameter" value="true" />
+		<property name="parameterName" value="mediaType" />
+		<property name="ignoreAcceptHeader" value="true" />
+		<property name="useJaf" value="false" />
+		<property name="defaultContentType" value="application/json" />
+
+		<property name="mediaTypes">
+			<map>
+				<entry key="json" value="application/json" />
+				<entry key="xml" value="application/xml" />
+			</map>
+		</property>
+	</bean>
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/" />
+		<property name="suffix" value=".jsp" />
+		<!-- <property name="exposedContextBeanNames"> -->
+		<!-- <list> -->
+		<!-- <value>menuComponent</value> -->
+		<!-- </list> -->
+		<!-- </property> -->
+	</bean>
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<bean
+					class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+				<bean
+					class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- Configurações JPA -->
+	<bean id="rHourDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="oracle.jdbc.OracleDriver" />
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@172.25.1.11:1521:PRD01" />
+		<property name="user" value="rhour" />
+		<property name="password" value="rhour" />
+		<property name="maxPoolSize" value="50" />
+		<property name="minPoolSize" value="10" />
+		<property name="maxStatements" value="100" />
+		<property name="testConnectionOnCheckout" value="true" />
+	</bean>
+	
+	<bean id="dpjManagerDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+      destroy-method="close">
+      <property name="driverClass" value="oracle.jdbc.OracleDriver" />
+      <property name="jdbcUrl" value="jdbc:oracle:thin:@172.25.0.15:1521:des01" />
+      <property name="user" value="dpjmanager" />
+      <property name="password" value="dpjmanager" />
+      <property name="maxPoolSize" value="50" />
+      <property name="minPoolSize" value="10" />
+      <property name="maxStatements" value="100" />
+      <property name="testConnectionOnCheckout" value="true" />
+   </bean>
+
+	<bean id="transactionManagerRhour" class="org.springframework.orm.jpa.JpaTransactionManager">
+	  <property name="entityManagerFactory" ref="entityManagerFactoryRHour" />
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManagerRhour" />
+	<bean id="transactionManagerDpjManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+     <property name="entityManagerFactory" ref="entityManagerFactoryDPJManager" />
+   </bean>
+   <tx:annotation-driven transaction-manager="transactionManagerDpjManager" />
+
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+	<bean id="entityManagerFactoryRHour" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceProviderClass" value="org.hibernate.jpa.HibernatePersistenceProvider" />
+		<property name="dataSource" ref="rHourDataSource" />
+		<property name="persistenceUnitName" value="rhourPU" />
+		<property name="persistenceXmlLocation" value="classpath:META-INF/persistenceRhour.xml" />
+	</bean>
+	<bean id="entityManagerFactoryDPJManager" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+      <property name="persistenceProviderClass" value="org.hibernate.jpa.HibernatePersistenceProvider" />
+      <property name="dataSource" ref="dpjManagerDataSource" />
+      <property name="persistenceUnitName" value="dpjManagerPU" />
+      <property name="persistenceXmlLocation" value="classpath:META-INF/persistenceDpjManager.xml" />
+   </bean>
+
+	<!-- Spring Security -->
+<!-- 	<security:global-method-security secured-annotations="enabled" /> -->
+<!-- 	<security:http auto-config="true" use-expressions="true"> -->
+<!-- 		<security:intercept-url pattern="/" access="permitAll" /> -->
+<!-- 		<security:intercept-url pattern="/restrito/**" access="isAuthenticated()" /> -->
+<!-- 		<security:form-login login-page="/login" authentication-failure-url="/login" default-target-url="/login" /> -->
+<!-- 		<security:logout invalidate-session="true" logout-url="/logout" logout-success-url="/login" /> -->
+<!-- 		<security:csrf /> -->
+<!-- 	</security:http> -->
+
+<!-- 	<bean id="bCryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" /> -->
+<!-- 	<security:authentication-manager alias="authenticationManager"> -->
+<!-- 		<security:authentication-provider user-service-ref="autenticacaoUsuarioService"> -->
+<!-- 			<security:password-encoder ref="bCryptPasswordEncoder" /> -->
+<!-- 		</security:authentication-provider> -->
+<!-- 	</security:authentication-manager> -->
+</beans>

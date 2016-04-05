@@ -11,26 +11,22 @@
       </ol>
       <div class="x_panel" style="height:600px;">
          <div class="x_title">
-             <h2>Solicitações</h2>
+             <h2>Disciplinas</h2>
              <div class="clearfix"></div>
          </div>
          <div class="x_content">
-	         <c:if test="${!empty listaSolicitacoes}">
+	         <c:if test="${!empty listaDisciplinas}">
 	           <table id="example" class="table table-striped responsive-utilities jambo_table">
 	              <thead>
                     <tr class="headings">
-	                    <th>Solicitação</th>
-	                    <th>Detalhar</th>
+	                    <th>Disciplina</th>
 	                 </tr>
 	              </thead>
 	              <tbody>
-	                 <c:forEach var="solicitacao" items="${listaSolicitacoes}">
+	                 <c:forEach var="dashboardDisciplina" items="${listaDashboardDisciplina}">
 		                 <tr class="even pointer">
 		                    <td>
-		                       ${solicitacao.nomeAtividade}
-		                    </td>
-		                    <td>
-		                       <a href="<c:url value='/disciplina/listarDisciplinas/${solicitacao.projeto.codProjeto}/${solicitacao.codAtividade}'/>">Detalhar</a>
+		                       ${dashboardDisciplina.nomeDisciplina}
 		                    </td>
 		                 </tr>
 	                 </c:forEach>

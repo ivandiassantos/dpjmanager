@@ -18,9 +18,10 @@ import lombok.Setter;
 @Table(name = "ATV")
 @Getter
 @Setter
-@NamedQuery(name = "listaSolicitacoesPorProjeto", query = "select atv from Atividade atv where atv.projeto.codProjeto =:codProjeto and atvniv = 2")
-public class Atividade implements Serializable{
-	
+@NamedQuery(name = "listaSolicitacoesPorProjeto", query = "select atv from Atividade atv join fetch atv.projeto prj "
+		+ "where prj.codProjeto =:codProjeto and atvniv = 2")
+public class Atividade implements Serializable {
+
 	private static final long serialVersionUID = -8111856128074808247L;
 	@Id
 	@Column(name = "ATVCOD")
@@ -29,7 +30,7 @@ public class Atividade implements Serializable{
 	@JoinColumn(name = "ATVCODMAE")
 	private Atividade atividadeMae;
 	@Column(name = "ATVNOM")
-   private String nomeAtividade;
+	private String nomeAtividade;
 	@Column(name = "ATVDSC")
 	private String descricaoAtividade;
 	@Column(name = "ATVNIV")

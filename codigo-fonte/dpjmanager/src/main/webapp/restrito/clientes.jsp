@@ -3,10 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <customTags:template>
    <div class="col-md-12 col-sm-12 col-xs-12">
-         <ol class="breadcrumb">
-           <li><a href="#">UPJ-BASA</a></li>
-           <li class="active"><a href="#">CLIENTES</a></li>
-         </ol>
          <div class="x_panel" style="height:600px;">
              <div class="x_title">
                  <h2>Clientes</h2>

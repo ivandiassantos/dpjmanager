@@ -35,26 +35,20 @@
 			<div class="col-md-3 left_col">
             	<%@include file="/WEB-INF/template/menuLateral.jsp" %>
             </div>
-
             <!-- top navigation -->
             <%@include file="/WEB-INF/template/menuSuperior.jsp" %>
             <!-- /top navigation -->
-
-
             <!-- page content -->
             <div class="right_col" role="main">
-                <div class="row">
-                    <jsp:doBody/>
-                </div>
-                <br />
-                <!-- footer content -->
+            	<jsp:doBody/>
+             	<br />
+               <!-- footer content -->
 				<%@include file="/WEB-INF/template/rodape.jsp" %>
-                <!-- /footer content -->
+               <!-- /footer content -->
             </div>
             <!-- /page content -->
         </div>
     </div>
-
     <script src="<c:url value='/resources/js/bootstrap.min.js'/>"></script>
     <script type="text/javascript" src="<c:url value='/resources/js/gauge/gauge.min.js'/>"></script>
     <script type="text/javascript" src="<c:url value='/resources/js/gauge/gauge_demo.js'/>"></script>

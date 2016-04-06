@@ -1,6 +1,10 @@
 package la.foton.dpjmanager.controller;
 
 import java.util.List;
+
+import la.foton.dpjmanager.entidades.rhour.Projeto;
+import la.foton.dpjmanager.service.ProjetoService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -9,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
-import la.foton.dpjmanager.entidades.Projeto;
-import la.foton.dpjmanager.service.ProjetoService;
 
 @Controller
 @RequestMapping(value="/projeto")

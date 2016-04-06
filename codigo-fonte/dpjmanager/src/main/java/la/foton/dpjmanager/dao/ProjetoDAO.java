@@ -2,7 +2,8 @@
 package la.foton.dpjmanager.dao;
 
 import java.util.List;
-import la.foton.dpjmanager.entidades.Projeto;
+
+import la.foton.dpjmanager.entidades.rhour.Projeto;
 
 public interface ProjetoDAO extends Dao<Projeto>
 {

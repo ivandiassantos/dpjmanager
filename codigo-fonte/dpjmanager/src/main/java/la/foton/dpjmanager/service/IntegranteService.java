@@ -1,7 +1,8 @@
 package la.foton.dpjmanager.service;
 
 import java.util.List;
-import la.foton.dpjmanager.entidades.Integrante;
+
+import la.foton.dpjmanager.entidades.rhour.Integrante;
 
 
 public interface IntegranteService

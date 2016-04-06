@@ -1,10 +1,13 @@
 package la.foton.dpjmanager.dao.impl;
 
 import java.util.List;
+
 import javax.persistence.TypedQuery;
-import org.springframework.stereotype.Repository;
+
 import la.foton.dpjmanager.dao.EmpresaDAO;
-import la.foton.dpjmanager.entidades.Empresa;
+import la.foton.dpjmanager.entidades.rhour.Empresa;
+
+import org.springframework.stereotype.Repository;
 
 @Repository
 public class EmpresaDAOImpl extends DaoImpl<Empresa> implements EmpresaDAO{

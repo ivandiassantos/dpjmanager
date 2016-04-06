@@ -1,10 +1,13 @@
 package la.foton.dpjmanager.dao.impl;
 
 import java.util.List;
+
 import javax.persistence.TypedQuery;
-import org.springframework.stereotype.Repository;
+
 import la.foton.dpjmanager.dao.DisciplinaDAO;
-import la.foton.dpjmanager.entidades.Disciplina;
+import la.foton.dpjmanager.entidades.dpjmanager.Disciplina;
+
+import org.springframework.stereotype.Repository;
 
 @Repository
 public class DisciplinaDAOImpl extends DaoImpl<Disciplina> implements DisciplinaDAO

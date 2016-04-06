@@ -2,7 +2,7 @@ package la.foton.dpjmanager.controller;
 
 import java.util.List;
 
-import la.foton.dpjmanager.entidades.Disciplina;
+import la.foton.dpjmanager.entidades.dpjmanager.Disciplina;
 import la.foton.dpjmanager.service.DisciplinaService;
 
 import org.springframework.beans.factory.annotation.Autowired;

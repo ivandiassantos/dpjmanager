@@ -105,6 +105,18 @@
       <property name="maxStatements" value="100" />
       <property name="testConnectionOnCheckout" value="true" />
    </bean>
+   
+   <bean id="cqManagerDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+      destroy-method="close">
+      <property name="driverClass" value="oracle.jdbc.OracleDriver" />
+      <property name="jdbcUrl" value="jdbc:oracle:thin:@172.25.1.11:1521:PRD01" />
+      <property name="user" value="cqusrprdbsa" />
+      <property name="password" value="cqusrprdbsa" />
+      <property name="maxPoolSize" value="50" />
+      <property name="minPoolSize" value="10" />
+      <property name="maxStatements" value="100" />
+      <property name="testConnectionOnCheckout" value="true" />
+   </bean>
 
 	<bean id="transactionManagerRhour" class="org.springframework.orm.jpa.JpaTransactionManager">
 	  <property name="entityManagerFactory" ref="entityManagerFactoryRHour" />
@@ -114,6 +126,11 @@
      <property name="entityManagerFactory" ref="entityManagerFactoryDPJManager" />
    </bean>
    <tx:annotation-driven transaction-manager="transactionManagerDpjManager" />
+   
+   <bean id="transactionManagerCq" class="org.springframework.orm.jpa.JpaTransactionManager">
+     <property name="entityManagerFactory" ref="entityManagerFactoryCQ" />
+   </bean>
+   <tx:annotation-driven transaction-manager="transactionManagerCq" />
 
 	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
 	<bean id="entityManagerFactoryRHour" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -127,6 +144,12 @@
       <property name="dataSource" ref="dpjManagerDataSource" />
       <property name="persistenceUnitName" value="dpjManagerPU" />
       <property name="persistenceXmlLocation" value="classpath:META-INF/persistenceDpjManager.xml" />
+   </bean>
+   <bean id="entityManagerFactoryCQ" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+      <property name="persistenceProviderClass" value="org.hibernate.jpa.HibernatePersistenceProvider" />
+      <property name="dataSource" ref="cqManagerDataSource" />
+      <property name="persistenceUnitName" value="cqPU" />
+      <property name="persistenceXmlLocation" value="classpath:META-INF/persistenceCQ.xml" />
    </bean>
 
 	<!-- Spring Security -->

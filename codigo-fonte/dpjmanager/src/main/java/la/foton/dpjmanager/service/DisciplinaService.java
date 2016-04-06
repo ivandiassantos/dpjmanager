@@ -3,7 +3,7 @@ package la.foton.dpjmanager.service;
 import java.util.List;
 
 import la.foton.dpjmanager.dto.DashBoardDisciplinaDTO;
-import la.foton.dpjmanager.entidades.Disciplina;
+import la.foton.dpjmanager.entidades.dpjmanager.Disciplina;
 
 
 public interface DisciplinaService

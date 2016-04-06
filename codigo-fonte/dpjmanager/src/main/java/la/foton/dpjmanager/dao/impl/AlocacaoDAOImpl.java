@@ -1,10 +1,13 @@
 package la.foton.dpjmanager.dao.impl;
 
 import java.util.List;
+
 import javax.persistence.TypedQuery;
-import org.springframework.stereotype.Repository;
+
 import la.foton.dpjmanager.dao.AlocacaoDAO;
-import la.foton.dpjmanager.entidades.Alocacao;
+import la.foton.dpjmanager.entidades.rhour.Alocacao;
+
+import org.springframework.stereotype.Repository;
 
 @Repository
 public class AlocacaoDAOImpl extends DaoImpl<Alocacao> implements AlocacaoDAO {

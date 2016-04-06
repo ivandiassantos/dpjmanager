@@ -2,10 +2,13 @@
 package la.foton.dpjmanager.dao.impl;
 
 import java.util.List;
+
 import javax.persistence.TypedQuery;
-import org.springframework.stereotype.Repository;
+
 import la.foton.dpjmanager.dao.AtividadeDAO;
-import la.foton.dpjmanager.entidades.Atividade;
+import la.foton.dpjmanager.entidades.rhour.Atividade;
+
+import org.springframework.stereotype.Repository;
 
 @Repository
 public class AtividadeDAOImpl extends DaoImpl<Atividade> implements AtividadeDAO

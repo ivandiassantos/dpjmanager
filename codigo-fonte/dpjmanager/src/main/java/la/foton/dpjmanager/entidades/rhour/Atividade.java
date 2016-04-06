@@ -1,4 +1,4 @@
-package la.foton.dpjmanager.entidades;
+package la.foton.dpjmanager.entidades.rhour;
 
 import java.io.Serializable;
 import java.util.List;

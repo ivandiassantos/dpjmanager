@@ -1,10 +1,13 @@
 package la.foton.dpjmanager.dao.impl;
 
 import java.util.List;
+
 import javax.persistence.TypedQuery;
-import org.springframework.stereotype.Repository;
+
 import la.foton.dpjmanager.dao.IntegranteDAO;
-import la.foton.dpjmanager.entidades.Integrante;
+import la.foton.dpjmanager.entidades.rhour.Integrante;
+
+import org.springframework.stereotype.Repository;
 
 @Repository
 public class IntegranteDAOImpl extends DaoImpl<Integrante> implements IntegranteDAO

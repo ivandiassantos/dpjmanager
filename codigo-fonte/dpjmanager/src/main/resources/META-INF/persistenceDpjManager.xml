@@ -12,7 +12,7 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 		</properties>
-		<class>la.foton.dpjmanager.entidades.Disciplina</class>
-		<class>la.foton.dpjmanager.entidades.ClassificacaoAtividade</class>
+		<class>la.foton.dpjmanager.entidades.dpjmanager.Disciplina</class>
+		<class>la.foton.dpjmanager.entidades.dpjmanager.ClassificacaoAtividade</class>
 	</persistence-unit>
 </persistence>

@@ -2,10 +2,13 @@ package la.foton.dpjmanager.dao.impl;
 
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.TypedQuery;
-import org.springframework.stereotype.Repository;
+
 import la.foton.dpjmanager.dao.NegociacaoDAO;
-import la.foton.dpjmanager.entidades.Negociacao;
+import la.foton.dpjmanager.entidades.rhour.Negociacao;
+
+import org.springframework.stereotype.Repository;
 
 @Repository
 public class NegociacaoDAOImpl extends DaoImpl<Negociacao> implements NegociacaoDAO{

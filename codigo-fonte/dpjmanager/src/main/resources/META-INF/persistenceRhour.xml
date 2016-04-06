@@ -11,12 +11,12 @@ version="2.1">
             <property name = "hibernate.show_sql" value = "true" />
             <property name = "hibernate.format_sql" value = "true" />
         </properties>
-        <class>la.foton.dpjmanager.entidades.Alocacao</class>
-        <class>la.foton.dpjmanager.entidades.AlocacaoPK</class>
-        <class>la.foton.dpjmanager.entidades.Atividade</class>
-        <class>la.foton.dpjmanager.entidades.Empresa</class>
-        <class>la.foton.dpjmanager.entidades.Integrante</class>
-        <class>la.foton.dpjmanager.entidades.Negociacao</class>
-        <class>la.foton.dpjmanager.entidades.Projeto</class>
+        <class>la.foton.dpjmanager.entidades.rhour.Alocacao</class>
+        <class>la.foton.dpjmanager.entidades.rhour.AlocacaoPK</class>
+        <class>la.foton.dpjmanager.entidades.rhour.Atividade</class>
+        <class>la.foton.dpjmanager.entidades.rhour.Empresa</class>
+        <class>la.foton.dpjmanager.entidades.rhour.Integrante</class>
+        <class>la.foton.dpjmanager.entidades.rhour.Negociacao</class>
+        <class>la.foton.dpjmanager.entidades.rhour.Projeto</class>
     </persistence-unit>
 </persistence>

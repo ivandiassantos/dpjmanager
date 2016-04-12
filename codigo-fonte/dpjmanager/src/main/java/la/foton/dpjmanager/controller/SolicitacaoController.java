@@ -27,4 +27,13 @@ public class SolicitacaoController
       retorno.addObject("listaSolicitacoes", atividadeService.listaSolicitacoesPorProjeto(codProjeto));
       return retorno;
    }
+   
+   @RequestMapping(value = "/obtemSolicitacoesPorCliente/{codCliente}", method = RequestMethod.GET)
+   public ModelAndView obtemSolicitacoesPorCliente(@PathVariable("codCliente") Long codCliente)
+   {
+      ModelAndView retorno = new ModelAndView("restrito/solicitacoesPorCliente");
+      
+//      retorno.addObject("listaSolicitacoes", atividadeService.listaSolicitacoesPorProjeto(codProjeto));
+      return retorno;
+   }
 }

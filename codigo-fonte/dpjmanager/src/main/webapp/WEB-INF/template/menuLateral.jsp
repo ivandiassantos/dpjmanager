@@ -19,8 +19,13 @@
     	<div class="menu_section">
             <ul class="nav side-menu">
                 <li>
-                	<a>
-                		<i class="fa fa-home"></i> In&iacute;cio <span class="fa fa-chevron-down"></span>
+                	<a href="<c:url value='/'/>">
+                		<i class="fa fa-home"></i> In&iacute;cio
+                	</a>
+                </li>
+                <li>
+                	<a href="<c:url value='/pacote/iniciarPesquisaPacotes'/>">
+                		<i class="fa fa-archive"></i> Pacotes
                 	</a>
                 </li>
             </ul>

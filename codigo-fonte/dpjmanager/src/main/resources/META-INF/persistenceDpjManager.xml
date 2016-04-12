@@ -14,5 +14,7 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
 		</properties>
 		<class>la.foton.dpjmanager.entidades.dpjmanager.Disciplina</class>
 		<class>la.foton.dpjmanager.entidades.dpjmanager.ClassificacaoAtividade</class>
+		<class>la.foton.dpjmanager.entidades.dpjmanager.Pacote</class>
+		<class>la.foton.dpjmanager.entidades.dpjmanager.PacoteSolicitacao</class>
 	</persistence-unit>
 </persistence>

@@ -1,0 +1,66 @@
+/*
+ * Criação : 11/04/2016
+ */
+package la.foton.dpjmanager.entidades.dpjmanager;
+
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import lombok.Getter;
+import lombok.Setter;
+
+/**
+ * Classe de mapeamento da tabela PACOTE.
+ * 
+ * @author Abril/2016: Ivan Dias <DD>
+ */
+@Entity
+@Table(name = "PACOTE")
+public class Pacote implements Serializable
+{
+
+   /** @TODO Comentar atributo */
+   private static final long serialVersionUID = -6529390451947238448L;
+   @Id
+   @Getter
+   @Setter
+   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_PACOTE")
+   @SequenceGenerator(name = "SEQ_PACOTE", sequenceName = "SEQ_PACOTE", initialValue = 1, allocationSize = 1)
+   @Column(name = "COD_PACOTE")
+   private Long codPacote;
+   @Getter
+   @Setter
+   @Column(name = "NOME_PACOTE")
+   private String nomePacote;
+   @Getter
+   @Setter
+   @Column(name = "DATA_CRIACAO")
+   @Temporal(TemporalType.DATE)
+   private Date dataCriacao;
+   @Getter
+   @Setter
+   @Column(name = "DATA_INICIO")
+   @Temporal(TemporalType.DATE)
+   private Date dataInicio;
+   @Getter
+   @Setter
+   @Column(name = "DATA_FINAL")
+   @Temporal(TemporalType.DATE)
+   private Date dataFinal;
+   @Getter
+   @Setter
+   @OneToMany(mappedBy = "pacote", fetch = FetchType.LAZY)
+   private List<PacoteSolicitacao> pacotesSolicitacao;
+
+}

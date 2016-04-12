@@ -62,7 +62,7 @@
 	                        <ul class="dropdown-menu" role="menu">
 	                            <li><a href="#">Administrativo</a>
 	                            </li>
-	                            <li><a href="<c:url value='/solicitacao/obtemSolicitacoesPorCliente/41'/>">Planejamento</a>
+	                            <li><a href="<c:url value='/obtemSolicitacoesPorCliente/41'/>">Planejamento</a>
 	                            </li>
 	                        </ul>
 	                    </li>

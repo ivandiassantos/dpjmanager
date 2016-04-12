@@ -12,5 +12,7 @@ version="2.1">
             <property name = "hibernate.format_sql" value = "true" />
         </properties>
         <class>la.foton.dpjmanager.entidades.cq.ProjetoCQ</class>
+        <class>la.foton.dpjmanager.entidades.cq.AtividadeCQ</class>
+        <class>la.foton.dpjmanager.entidades.cq.Solicitacao</class>
     </persistence-unit>
 </persistence>

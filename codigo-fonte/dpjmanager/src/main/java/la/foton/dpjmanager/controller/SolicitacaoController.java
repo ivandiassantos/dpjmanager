@@ -1,39 +1,32 @@
 
 package la.foton.dpjmanager.controller;
 
-import la.foton.dpjmanager.service.AtividadeService;
-
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.servlet.ModelAndView;
+import la.foton.dpjmanager.entidades.cq.Solicitacao;
+import la.foton.dpjmanager.service.SolicitacaoService;
 
 @Controller
 @Scope(value = WebApplicationContext.SCOPE_REQUEST)
 @RequestMapping("/solicitacao")
 public class SolicitacaoController
 {
+
    @Autowired
-   private AtividadeService atividadeService;
-   
-   @RequestMapping(value = "/listarSolicitacoesPorProjeto/{codProjeto}", method = RequestMethod.GET)
-   public ModelAndView listarSolicitacoesPorCliente(@PathVariable("codProjeto") Long codProjeto)
+   private SolicitacaoService solicitacaoService;
+
+   @RequestMapping(value = "/listaSolicitacoesPorNome", method = RequestMethod.GET)
+   public @ResponseBody List<Solicitacao> listaSolicitacoesPorNome(@RequestParam("nomeSolicitacao") String nomeSolicitacao,
+      @RequestParam("solicitacoes") String solicitacoes)
    {
-      ModelAndView retorno = new ModelAndView("restrito/solicitacoes");
-      retorno.addObject("listaSolicitacoes", atividadeService.listaSolicitacoesPorProjeto(codProjeto));
-      return retorno;
-   }
-   
-   @RequestMapping(value = "/obtemSolicitacoesPorCliente/{codCliente}", method = RequestMethod.GET)
-   public ModelAndView obtemSolicitacoesPorCliente(@PathVariable("codCliente") Long codCliente)
-   {
-      ModelAndView retorno = new ModelAndView("restrito/solicitacoesPorCliente");
-      
-//      retorno.addObject("listaSolicitacoes", atividadeService.listaSolicitacoesPorProjeto(codProjeto));
-      return retorno;
+      List<Solicitacao> listaSolicitacoes = solicitacaoService.listaSolicitacaoPorNome(nomeSolicitacao, solicitacoes);
+      return listaSolicitacoes;
    }
 }

@@ -2,69 +2,90 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="customTags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<customTags:template>
-   <div class="col-md-12 col-sm-12 col-xs-12">
-      <ol class="breadcrumb">
-        <li><a href="#">Pacotes</a></li>
-      </ol>
-      <div class="x_panel" style="height:600px;">
-         <div class="x_title">
-             <h2>Pesquisar</h2>
-             <div class="clearfix"></div>
-         </div>
-         <div class="x_content">
-           <form:form servletRelativeAction="/pacote/pesquisarPacotes" method="post" cssClass="form-horizontal form-label-left">
-               <div class="form-group">
-                  <label for="nomePacote" class="control-label col-md-1">Nome</label>
-                  <div class="col-md-3">
-                     <input type="text" id="nomePacote" class="form-control" required name="nomePacote"/>
-                  </div>
-               </div>
-               <div class="form-group">
-                  <label for="dataInicio" class="control-label col-md-1">Data de Início:</label>
-                  <div class="col-md-3">
-                     <input type="date" id="dataInicio" class="form-control" required name="dataInicio"/>
-                  </div>
-               </div>
-               <div class="form-group">
-                  <label for="dataTermino" class="control-label col-md-1">Data de Término:</label>
-                  <div class="col-md-3">
-                     <input type="date" id="dataTermino" class="form-control" required name="dataFinal"/>
-                  </div>
-               </div>
-               <div class="ln_solid"></div>
-               <div class="form-group">
-                   <div class="col-md-3">
-                       <button type="submit" class="btn btn-success">Pesquisar</button>
-                       <button type="reset" class="btn">Limpar</button>
-                       <a href="<c:url value='/pacote/iniciarInclusaoPacote'/>" class="btn btn-default">Novo</a>
-                   </div>
-               </div>
-           </form:form>
-         </div>
-             <c:if test="${!empty listaPacotes}">
-               <table id="example" class="table table-striped responsive-utilities jambo_table">
-                  <thead>
-                        <tr class="headings">
-                        <th>Nome</th>
-                        <th>Data de Início</th>
-                        <th>Data de Término</th>
-                     </tr>
-                  </thead>
-                  <tbody>
-	                  <c:forEach var="pacote" items="${listaPacotes}">
-	                     <tr class="even pointer">
-	                        <td>
-	                        </td>
-	                        <td>
-	                        </td>
-	                        <td>
-	                        </td>
-	                     </tr>
-	                  </c:forEach>
-                  </tbody>
-               </table>
-            </c:if>
-             </div>
-         </div>
-</customTags:template>
+<customTags:templateFuncionalidades nomeIconeFuncionalidade="icon-briefcase" tituloFuncionalidade="Pesquisar Pacotes">
+	<form class="form-horizontal">
+		<fieldset>
+			<div class="control-group">											
+				<label class="control-label" for="nomePacote">Nome:</label>
+				<div class="controls">
+					<input type="text" class="span6" id="nomePacote" name="nomePacote" />
+				</div>		
+			</div>
+			<div class="control-group">											
+				<label class="control-label" for="dataInicio">Data de Início:</label>
+				<div class="controls">
+					<input type="date" class="span6" id="dataInicio" name="dataInicio" />
+				</div>		
+			</div>
+			<div class="control-group">											
+				<label class="control-label" for="dataTermino">Data de Término:</label>
+				<div class="controls">
+					<input type="date" class="span6" id="dataTermino" name="dataTermino" />
+				</div>		
+			</div>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary">Pesquisar</button>
+				<button class="btn">Limpar</button>
+				<a href="<c:url value='/pacote/iniciarInclusaoPacote'/>" class="btn btn-info">Novo</a>
+			</div>
+		</fieldset>
+		<fieldset>
+			<c:if test="${!empty listaPacotes}">
+				<table id="listaPacotes" class="display">
+					<thead>
+            			<tr>
+            				<th>Nome do Pacote</th>
+            				<th>Data de Início</th>
+            				<th>Data de Término</th>
+            				<th>Solicitações</th>
+            				<th>Ações</th>
+            			</tr>
+            		</thead>
+            		<tbody>
+	            		<c:forEach items="${listaPacotes}" var="pacote">
+	            			<tr>
+	            				<td>
+	            					${pacote.nomePacote}
+	            				</td>
+	            				<td>
+	            					${pacote.dataInicio}
+	            				</td>
+	            				<td>
+	            					${pacote.dataFinal}
+	            				</td>
+	            				<td>
+	            					<c:forEach items="${pacote.pacotesSolicitacao}" var="pacoteSolicitacao">
+	            						${pacoteSolicitacao.idSolicitacao}<br/>
+	            					</c:forEach>
+	            				</td>
+	            				<td>
+	            					<a href="<c:url value='/pacote/detalharPacote/${pacote.codPacote}'/>" class="btn btn-success btn-small" title="Visualizar"><i class="btn-icon-only icon-search"></i></a>
+	            					<a href="<c:url value='/pacote/iniciarEdicaoPacote/${pacote.codPacote}'/>" class="btn btn-primary btn-small" title="Editar"><i class="btn-icon-only icon-edit"></i></a>
+	            					<a href="#myModal" role="button" data-toggle="modal" class="btn btn-danger btn-small" title="Excluir"><i class="btn-icon-only icon-trash"></i></a>
+	            					<!-- Modal -->
+						            <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						                 <div class="modal-header">
+						                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						                    <h3 id="myModalLabel">Thank you for visiting EGrappler.com</h3>
+						                 </div>
+						                 <div class="modal-body">
+						                    <p>One fine body…</p>
+						                 </div>
+						                 <div class="modal-footer">
+						                      <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+						                      <button class="btn btn-primary">Save changes</button>
+						                 </div>
+						            </div>
+	            				</td>
+	            			</tr>	
+	            		</c:forEach>
+            		</tbody>
+				</table>
+			</c:if>
+		</fieldset>
+	</form>
+	<script src="<c:url value='/resources/js/jquery.dataTables.js'/>"></script>
+	<script>
+		$('#listaPacotes').DataTable();
+	</script>
+</customTags:templateFuncionalidades>

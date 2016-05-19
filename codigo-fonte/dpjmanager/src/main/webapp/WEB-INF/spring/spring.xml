@@ -19,6 +19,7 @@
 	<context:component-scan base-package="la.foton.dpjmanager.entidades" />
 	<context:component-scan base-package="la.foton.dpjmanager.dao" />
 	<context:component-scan base-package="la.foton.dpjmanager.service" />
+	<context:component-scan base-package="la.foton.dpjmanager.util" />
 	<!-- Configurações Spring MVC -->
 	<mvc:annotation-driven />
 	<mvc:default-servlet-handler />
@@ -137,20 +138,40 @@
 		<property name="persistenceProviderClass" value="org.hibernate.jpa.HibernatePersistenceProvider" />
 		<property name="dataSource" ref="rHourDataSource" />
 		<property name="persistenceUnitName" value="rhourPU" />
-		<property name="persistenceXmlLocation" value="classpath:META-INF/persistenceRhour.xml" />
+		<property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml" />
 	</bean>
 	<bean id="entityManagerFactoryDPJManager" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
       <property name="persistenceProviderClass" value="org.hibernate.jpa.HibernatePersistenceProvider" />
       <property name="dataSource" ref="dpjManagerDataSource" />
       <property name="persistenceUnitName" value="dpjManagerPU" />
-      <property name="persistenceXmlLocation" value="classpath:META-INF/persistenceDpjManager.xml" />
+      <property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml" />
    </bean>
    <bean id="entityManagerFactoryCQ" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
       <property name="persistenceProviderClass" value="org.hibernate.jpa.HibernatePersistenceProvider" />
       <property name="dataSource" ref="cqManagerDataSource" />
       <property name="persistenceUnitName" value="cqPU" />
-      <property name="persistenceXmlLocation" value="classpath:META-INF/persistenceCQ.xml" />
+      <property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml" />
    </bean>
+   <!-- Conversão de dados -->
+   <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="registerDefaultFormatters" value="false" />
+        <property name="formatters">
+            <set>
+                <bean class="org.springframework.format.number.NumberFormatAnnotationFormatterFactory" />
+            </set>
+        </property>
+        <property name="formatterRegistrars">
+            <set>
+                <bean class="org.springframework.format.datetime.joda.JodaTimeFormatterRegistrar">
+                    <property name="dateFormatter">
+                        <bean class="org.springframework.format.datetime.joda.DateTimeFormatterFactoryBean">
+                            <property name="pattern" value="yyyy-MM-dd"/>
+                        </bean>
+                    </property>
+                </bean>
+            </set>
+        </property>
+    </bean>
 
 	<!-- Spring Security -->
 <!-- 	<security:global-method-security secured-annotations="enabled" /> -->

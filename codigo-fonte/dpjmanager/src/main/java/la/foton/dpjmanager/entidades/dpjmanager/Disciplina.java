@@ -1,3 +1,4 @@
+
 package la.foton.dpjmanager.entidades.dpjmanager;
 
 import javax.persistence.Column;
@@ -15,6 +16,7 @@ import lombok.Setter;
 @NamedQuery(name = "listaDisciplinas", query = "select d from Disciplina d ")
 public class Disciplina
 {
+
    @Id
    @Column(name = "COD_DISCIPLINA")
    private Long codDisciplina;

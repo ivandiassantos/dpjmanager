@@ -1,6 +1,7 @@
 /*
  * Criação : 11/04/2016
  */
+
 package la.foton.dpjmanager.entidades.dpjmanager;
 
 import java.io.Serializable;
@@ -13,6 +14,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -27,6 +30,9 @@ import lombok.Setter;
  */
 @Entity
 @Table(name = "PACOTE_SOLICITACAO")
+@NamedQueries({
+   @NamedQuery(name = "obtemPorSolicitacao", query = "select ps from PacoteSolicitacao ps where ps.pacote =:pacote")
+})
 public class PacoteSolicitacao implements Serializable
 {
 

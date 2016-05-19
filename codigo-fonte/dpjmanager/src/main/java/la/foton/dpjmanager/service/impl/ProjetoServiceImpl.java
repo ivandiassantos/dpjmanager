@@ -1,22 +1,23 @@
 package la.foton.dpjmanager.service.impl;
 
 import java.util.List;
-
-import la.foton.dpjmanager.dao.ProjetoDAO;
-import la.foton.dpjmanager.entidades.rhour.Projeto;
-import la.foton.dpjmanager.service.ProjetoService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import la.foton.dpjmanager.dao.ProjetoDAO;
+import la.foton.dpjmanager.entidades.cq.Projeto;
+import la.foton.dpjmanager.service.ProjetoService;
 
 @Service("projetoService")
-public class ProjetoServiceImpl implements ProjetoService {
-	@Autowired
-	private ProjetoDAO projetoDAO;
+public class ProjetoServiceImpl implements ProjetoService
+{
 
-	@Override
-	public List<Projeto> listaPorCliente(Long codCliente)
-	{
-	   return projetoDAO.listaPorCliente(codCliente);
-	}
+   @Autowired
+   private ProjetoDAO projetoDAO;
+
+   @Override
+   public List<Projeto> listaPorIdSolicitacao(String idSolicitacao)
+   {
+      return projetoDAO.obtemProjetosPorSolicitacao(idSolicitacao);
+   }
+
 }

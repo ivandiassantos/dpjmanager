@@ -12,6 +12,7 @@ import la.foton.dpjmanager.entidades.cq.Projeto;
 public class ProjetoDAOImpl extends DaoImpl<Projeto> implements ProjetoDAO
 {
 
+   @SuppressWarnings("unchecked")
    @Override
    public List<Projeto> obtemProjetosPorSolicitacao(String idSolicitacao)
    {

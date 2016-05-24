@@ -10,7 +10,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class DashboardUnidadeDTO
 {
-
    private String nomePacote;
    private List<SolicitacaoDTO> listaSolicitacoes;
 }

@@ -6,8 +6,5 @@ import la.foton.dpjmanager.entidades.dpjmanager.ClassificacaoAtividade;
 
 public interface ClassificacaoAtividadeService
 {
-
-   List<ClassificacaoAtividade> listaPorCodigoDisciplina(Long codigoDisciplina);
-
-   List<String> obtemListaDescricaoAtividadePorCodigoDisciplina(Long codigoDisciplina);
+   List<ClassificacaoAtividade> listaClassificacaoAtividade();
 }

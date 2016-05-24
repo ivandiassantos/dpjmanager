@@ -7,6 +7,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,6 +16,7 @@ import lombok.Setter;
 @Table(name = "CLASSIFICACAO_ATIVIDADE")
 @Getter
 @Setter
+@NamedQuery(name = "listaClassificacaoAtividade", query = "select ca from ClassificacaoAtividade ca join fetch ca.disciplina d ")
 public class ClassificacaoAtividade
 {
 

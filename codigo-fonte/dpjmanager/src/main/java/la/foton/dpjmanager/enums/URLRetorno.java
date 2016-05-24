@@ -21,6 +21,7 @@ public enum URLRetorno
       DETALHAR_PACOTE("restrito/pacote/detalharPacote"),
       DASHBOARD_UNIDADES("/restrito/unidades"),
       DASHBOARD_POR_UNIDADE("/restrito/unidade/dashboardUnidade"),
+      DETALHAMENTO_ATIVIDADES_POR_PROJETO_SOLICITACAO("/restrito/unidade/detalhamentoAtividadesPorProjetoSolicitacao"),
       INICIAR_EDICAO_PACOTE("/restrito/pacote/editarPacote");
 
    @Getter

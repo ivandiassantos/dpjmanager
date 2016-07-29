@@ -52,7 +52,7 @@
    		$("#tabelaSolicitacoes").hide();
 	    var campoHiddenSolicitacoes = [];
 		$("#nomeSolicitacao").autocomplete({
-			minLength: 4,
+			minLength: 5,
 	        delay: 500,
 	        source: function (request, response) {
 	            $.getJSON("${pageContext.request.contextPath}/solicitacao/listaSolicitacoesPorNome?nomeSolicitacao="+$("#nomeSolicitacao").val()+"&solicitacoes="+$("#solicitacoes").val(), request, function(result) {

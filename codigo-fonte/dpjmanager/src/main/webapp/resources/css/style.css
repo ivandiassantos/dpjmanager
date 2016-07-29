@@ -1122,6 +1122,11 @@ color: #ab171e;
 color: #333;
 }
 
+td.detalhamentoProjetoSolicitacao {
+    background: url('../images/icone_abre_detalhamento.png') no-repeat center center;
+    cursor: pointer;
+}
+
 .all-icons li { list-style:none;}
 
 .ML0 { margin-left:0}

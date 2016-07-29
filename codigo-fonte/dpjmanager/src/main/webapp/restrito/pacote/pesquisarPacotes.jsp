@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="customTags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
@@ -45,13 +46,13 @@
 	            		<c:forEach items="${listaPacotes}" var="pacote">
 	            			<tr>
 	            				<td>
-	            					${pacote.nomePacote}
+	            				    ${pacote.nomePacote}
 	            				</td>
 	            				<td>
-	            					${pacote.dataInicio}
+	            				    <fmt:formatDate value="${pacote.dataInicio}" pattern="dd/MM/yyyy"/>
 	            				</td>
 	            				<td>
-	            					${pacote.dataFinal}
+	            				    <fmt:formatDate value="${pacote.dataFinal}" pattern="dd/MM/yyyy"/>
 	            				</td>
 	            				<td>
 	            					<c:forEach items="${pacote.pacotesSolicitacao}" var="pacoteSolicitacao">
@@ -86,6 +87,10 @@
 	</form>
 	<script src="<c:url value='/resources/js/jquery.dataTables.js'/>"></script>
 	<script>
-		$('#listaPacotes').DataTable();
+		$('#listaPacotes').DataTable({
+			"language": {
+				"url": "${pageContext.request.contextPath}/resources/js/portugues.brasil.lang"
+         }
+		});
 	</script>
 </customTags:templateFuncionalidades>

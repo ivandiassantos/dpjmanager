@@ -15,11 +15,11 @@
 	<!-- Basic Configurations -->
 	<context:annotation-config />
 
-	<context:component-scan base-package="la.foton.dpjmanager.controller" />
-	<context:component-scan base-package="la.foton.dpjmanager.entidades" />
-	<context:component-scan base-package="la.foton.dpjmanager.dao" />
-	<context:component-scan base-package="la.foton.dpjmanager.service" />
-	<context:component-scan base-package="la.foton.dpjmanager.util" />
+	<context:component-scan base-package="br.com.dpjmanager.controller" />
+	<context:component-scan base-package="br.com.dpjmanager.entidades" />
+	<context:component-scan base-package="br.com.dpjmanager.dao" />
+	<context:component-scan base-package="br.com.dpjmanager.service" />
+	<context:component-scan base-package="br.com.dpjmanager.util" />
 	<!-- Configurações Spring MVC -->
 	<mvc:annotation-driven />
 	<mvc:default-servlet-handler />

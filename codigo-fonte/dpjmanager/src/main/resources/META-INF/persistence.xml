@@ -11,9 +11,9 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 		</properties>
-		<class>la.foton.dpjmanager.entidades.cq.Solicitacao</class>
-		<class>la.foton.dpjmanager.entidades.cq.Projeto</class>
-		<class>la.foton.dpjmanager.entidades.cq.Defeito</class>
+		<class>br.com.dpjmanager.entidades.cq.Solicitacao</class>
+		<class>br.com.dpjmanager.entidades.cq.Projeto</class>
+		<class>br.com.dpjmanager.entidades.cq.Defeito</class>
 	</persistence-unit>
 	<persistence-unit name="dpjManagerPU"
 		transaction-type="RESOURCE_LOCAL">
@@ -23,10 +23,10 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 		</properties>
-		<class>la.foton.dpjmanager.entidades.dpjmanager.Disciplina</class>
-		<class>la.foton.dpjmanager.entidades.dpjmanager.ClassificacaoAtividade</class>
-		<class>la.foton.dpjmanager.entidades.dpjmanager.Pacote</class>
-		<class>la.foton.dpjmanager.entidades.dpjmanager.PacoteSolicitacao</class>
+		<class>br.com.dpjmanager.entidades.dpjmanager.Disciplina</class>
+		<class>br.com.dpjmanager.entidades.dpjmanager.ClassificacaoAtividade</class>
+		<class>br.com.dpjmanager.entidades.dpjmanager.Pacote</class>
+		<class>br.com.dpjmanager.entidades.dpjmanager.PacoteSolicitacao</class>
 	</persistence-unit>
 	<persistence-unit name="rhourPU" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
@@ -35,5 +35,10 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 		</properties>
+		<class>br.com.dpjmanager.entidades.rhour.RelacaoAtividadeCQNegociacao</class>
+		<class>br.com.dpjmanager.entidades.rhour.Atividade</class>
+		<class>br.com.dpjmanager.entidades.rhour.Negociacao</class>
+		<class>br.com.dpjmanager.entidades.rhour.Integrante</class>
+		<class>br.com.dpjmanager.entidades.rhour.Projeto</class>
 	</persistence-unit>
 </persistence>

@@ -32,10 +32,6 @@ public class IndexController
    @RequestMapping(method = RequestMethod.GET, value = "/")
    public ModelAndView index()
    {
-      ModelAndView retorno = new ModelAndView(URLRetorno.PAGINA_AUTENTICACAO.getUrl());
-      // ModelAndView retorno = new ModelAndView(URLRetorno.DASHBOARD_POR_UNIDADE.getUrl());
-      // List<DashboardUnidadeDTO> listaDashboardUnidade = dashboardUnidadeService.obtemDashboardUnidade();
-      // retorno.addObject("listaDashboardUnidade", listaDashboardUnidade);
-      return retorno;
+      return new ModelAndView(URLRetorno.PAGINA_AUTENTICACAO.getUrl());
    }
 }

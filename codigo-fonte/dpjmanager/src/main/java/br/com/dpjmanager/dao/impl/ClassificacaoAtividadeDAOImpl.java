@@ -7,7 +7,7 @@ import br.com.dpjmanager.dao.ClassificacaoAtividadeDAO;
 import br.com.dpjmanager.entidades.dpjmanager.ClassificacaoAtividade;
 
 @Repository
-public class ClassificacaoAtividadeDAOImpl extends DaoImpl<ClassificacaoAtividade> implements ClassificacaoAtividadeDAO
+public class ClassificacaoAtividadeDAOImpl extends DaoImpl implements ClassificacaoAtividadeDAO
 {
 
    @SuppressWarnings("unchecked")

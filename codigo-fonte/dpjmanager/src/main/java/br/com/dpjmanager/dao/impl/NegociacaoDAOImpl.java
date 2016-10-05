@@ -7,7 +7,7 @@ import br.com.dpjmanager.dao.NegociacaoDAO;
 import br.com.dpjmanager.entidades.rhour.Negociacao;
 
 @Repository
-public class NegociacaoDAOImpl extends DaoImpl<Negociacao> implements NegociacaoDAO
+public class NegociacaoDAOImpl extends DaoImpl implements NegociacaoDAO
 {
 
    @SuppressWarnings("unchecked")

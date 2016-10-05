@@ -3,7 +3,7 @@ package br.com.dpjmanager.dao;
 import java.util.List;
 import br.com.dpjmanager.entidades.dpjmanager.ClassificacaoAtividade;
 
-public interface ClassificacaoAtividadeDAO extends Dao<ClassificacaoAtividade>
+public interface ClassificacaoAtividadeDAO extends Dao
 {
 
    List<ClassificacaoAtividade> listaClassificacaoAtividade();

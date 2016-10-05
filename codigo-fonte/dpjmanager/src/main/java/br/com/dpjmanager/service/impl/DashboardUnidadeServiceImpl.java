@@ -168,4 +168,10 @@ public class DashboardUnidadeServiceImpl implements DashboardUnidadeService
       return listaDetalhamentoAtividades;
    }
 
+   @Override
+   public void obtemDadosFaturamentoPorProjeto()
+   {
+
+   }
+
 }

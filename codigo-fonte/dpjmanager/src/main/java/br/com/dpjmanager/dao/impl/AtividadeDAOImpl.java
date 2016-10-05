@@ -7,7 +7,7 @@ import br.com.dpjmanager.dao.AtividadeDAO;
 import br.com.dpjmanager.entidades.rhour.Atividade;
 
 @Repository
-public class AtividadeDAOImpl extends DaoImpl<Atividade> implements AtividadeDAO
+public class AtividadeDAOImpl extends DaoImpl implements AtividadeDAO
 {
 
    // @Override

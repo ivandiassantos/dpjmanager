@@ -8,7 +8,7 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
-			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.show_sql" value="false" />
 			<property name="hibernate.format_sql" value="true" />
 		</properties>
 		<class>br.com.dpjmanager.entidades.cq.Solicitacao</class>
@@ -20,19 +20,22 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
-			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.show_sql" value="false" />
 			<property name="hibernate.format_sql" value="true" />
 		</properties>
 		<class>br.com.dpjmanager.entidades.dpjmanager.Disciplina</class>
 		<class>br.com.dpjmanager.entidades.dpjmanager.ClassificacaoAtividade</class>
 		<class>br.com.dpjmanager.entidades.dpjmanager.Pacote</class>
 		<class>br.com.dpjmanager.entidades.dpjmanager.PacoteSolicitacao</class>
+		<class>br.com.dpjmanager.entidades.dpjmanager.ArquivoDashboardUnidade</class>
+		<class>br.com.dpjmanager.entidades.dpjmanager.ArquivoDashboardDiretoria</class>
+		<class>br.com.dpjmanager.entidades.dpjmanager.FaturamentoProjeto</class>
 	</persistence-unit>
 	<persistence-unit name="rhourPU" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
-			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.show_sql" value="false" />
 			<property name="hibernate.format_sql" value="true" />
 		</properties>
 		<class>br.com.dpjmanager.entidades.rhour.RelacaoAtividadeCQNegociacao</class>

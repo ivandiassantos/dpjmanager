@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,17 +34,29 @@
                   <h3 class="panel-title">DPJ Manager - Autentica&ccedil;&atilde;o</h3>
                </div>
                <div class="panel-body">
-                  <form role="form">
+                  <c:if test="${!empty mensagemErro}">
+		               <div class="alert alert-danger alert-dismissable">
+		                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		                  <strong>Erro.</strong>&nbsp;<c:out value="${mensagemErro}"/>
+		               </div>
+		            </c:if>
+		            <c:if test="${!empty mensagemSucesso}">
+		               <div class="alert alert-success alert-dismissable">
+		                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		                  <strong>Erro.</strong>&nbsp;<c:out value="${mensagemSucesso}"/>
+		               </div>
+		            </c:if>
+                  <form:form role="form" servletRelativeAction="/autenticar" method="post">
                      <fieldset>
                         <div class="form-group">
-                           <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus required>
+                           <input class="form-control" placeholder="E-mail" name="login" type="email" autofocus required>
                         </div>
                         <div class="form-group">
                            <input class="form-control" placeholder="Senha" name="senha" type="password" required autofocus>
                         </div>
-                        <a href="<c:url value='/restrito/principal'/>" class="btn btn-lg btn-success btn-block">Login</a>
+                        <input type="submit" class="btn btn-lg btn-success btn-block" value="Login"/>
                      </fieldset>
-                  </form>
+                  </form:form>
                </div>
             </div>
          </div>

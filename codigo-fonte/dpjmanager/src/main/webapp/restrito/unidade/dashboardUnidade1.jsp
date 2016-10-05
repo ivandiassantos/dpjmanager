@@ -94,81 +94,88 @@
                 <div class="col-lg-12">
                     <h1 class="page-header">Dashboard - UPJ - BASA</h1>
                 </div>
-                <div class="col-md-6 col-xs-6">
-                  <a href="#" class="thumbnail">
-                     <img src="<c:url value='/resources/novo/imagens/dashboard/UPJ1.png'/>"/>
-                  </a>
-                  <p>
-                     <button type="button" class="btn btn-default"><i class="fa fa-upload"></i> Substituir</button>
-                     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal"><i class="fa fa-search"></i> Ampliar</button>
-                  </p>
-                </div>
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <img src="<c:url value='/resources/novo/imagens/dashboard/UPJ1.png'/>"/>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                            </div>
+                <c:set var="index" value="${1}"/>
+                <c:forEach items="${listaArquivosUnidade}" var="arquivoUnidade">
+                  <c:choose>
+                     <c:if test="${index eq 2 or index eq 3}">
+                        <div class="col-md-12 col-xs-12">
+	                        <a href="#" class="thumbnail">
+	                          <c:choose>
+	                             <c:when test="${!empty arquivoUnidade.caminhoArquivo}">
+	                                <img src="${arquivoUnidade.caminhoArquivo}"/>
+	                             </c:when>
+	                             <c:otherwise>
+	                                <p>Nenhum arquivo adicionado.</p>
+	                             </c:otherwise>
+	                          </c:choose>
+	                        </a>
+                           <p>
+                              <form:form id="formArquivoDiretoria${index}" servletRelativeAction="/restrito/uploadImagem/substituirImagemDiretoria" method="post" enctype="multipart/form-data">
+                                 <input type="hidden" name="ordemExibicao" value="${arquivoUnidade.ordemExibicao}"/>
+                                 <input type="hidden" name="codArquivoDashbardDiretoria" value="${arquivoUnidade.codArquivoDashbardUnidade}"/>
+                                 <input type="file" name="imagem"/>
+                                 <br/>
+                                 <button type="submit" class="btn btn-default"><i class="fa fa-upload"></i> Substituir</button>
+                                 <button type="button" class="btn btn-default" data-toggle="modalUnidade${index}" data-target="#modalUnidade${index}"><i class="fa fa-search"></i> Ampliar</button>
+                              </form:form>
+                           </p>
                         </div>
-                        <!-- /.modal-content -->
-                    </div>
-                    <!-- /.modal-dialog -->
-                </div>
-                <!-- /.modal -->
-                <div class="col-md-6 col-xs-6">
-                  <a href="#" class="thumbnail">
-                     <img src="<c:url value='/resources/novo/imagens/dashboard/UPJ4.png'/>"/>
-                  </a>
-                  <p>
-                     <button type="button" class="btn btn-default"><i class="fa fa-upload"></i> Substituir</button>
-                     <button type="button" class="btn btn-default"><i class="fa fa-search"></i> Ampliar</button>
-                  </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 col-xs-12">
-                  <a href="#" class="thumbnail">
-                     <img src="<c:url value='/resources/novo/imagens/dashboard/UPJ3.png'/>"/>
-                  </a>
-                  <p>
-                     <button type="button" class="btn btn-default"><i class="fa fa-upload"></i> Substituir</button>
-                     <button type="button" class="btn btn-default"><i class="fa fa-search"></i> Ampliar</button>
-                  </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 col-xs-12">
-                  <a href="#" class="thumbnail">
-                     <img src="<c:url value='/resources/novo/imagens/dashboard/UPJ2.png'/>"/>
-                  </a>
-                  <p>
-                     <button type="button" class="btn btn-default"><i class="fa fa-upload"></i> Substituir</button>
-                     <button type="button" class="btn btn-default"><i class="fa fa-search"></i> Ampliar</button>
-                  </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 col-xs-6">
-                  <a href="#" class="thumbnail">
-                     <img src="<c:url value='/resources/novo/imagens/dashboard/UPJ5.png'/>"/>
-                  </a>
-                  <p>
-                     <button type="button" class="btn btn-default"><i class="fa fa-upload"></i> Substituir</button>
-                     <button type="button" class="btn btn-default"><i class="fa fa-search"></i> Ampliar</button>
-                  </p>
-                </div>
-                <div class="col-md-6 col-xs-6">
-                  <a href="#" class="thumbnail">
-                     <img src="<c:url value='/resources/novo/imagens/dashboard/UPJ5.png'/>"/>
-                  </a>
-                  <p>
-                     <button type="button" class="btn btn-default"><i class="fa fa-upload"></i> Substituir</button>
-                     <button type="button" class="btn btn-default"><i class="fa fa-search"></i> Ampliar</button>
-                  </p>
-                </div>
+                        <div class="modal fade" id="modalUnidade${index}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                           <div class="modal-dialog modal-lg" role="document">
+                              <div class="modal-content">
+                                 <div class="modal-body">
+                                    <img src="${arquivoUnidade.caminhoArquivo}"/>
+                                 </div>
+                                 <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                 </div>
+                              </div>
+                              <!-- /.modal-content -->
+                           </div>
+                           <!-- /.modal-dialog -->
+                        </div>
+                     </c:if>
+                     <c:otherwise>
+                        <div class="col-md-12 col-xs-12">
+                           <a href="#" class="thumbnail">
+                             <c:choose>
+                                <c:when test="${!empty arquivoUnidade.caminhoArquivo}">
+                                   <img src="${arquivoUnidade.caminhoArquivo}"/>
+                                </c:when>
+                                <c:otherwise>
+                                   <p>Nenhum arquivo adicionado.</p>
+                                </c:otherwise>
+                             </c:choose>
+                           </a>
+                           <p>
+                              <form:form id="formArquivoDiretoria${index}" servletRelativeAction="/restrito/uploadImagem/substituirImagemDiretoria" method="post" enctype="multipart/form-data">
+                                 <input type="hidden" name="ordemExibicao" value="${arquivoUnidade.ordemExibicao}"/>
+                                 <input type="hidden" name="codArquivoDashbardDiretoria" value="${arquivoUnidade.codArquivoDashbardUnidade}"/>
+                                 <input type="file" name="imagem"/>
+                                 <br/>
+                                 <button type="submit" class="btn btn-default"><i class="fa fa-upload"></i> Substituir</button>
+                                 <button type="button" class="btn btn-default" data-toggle="modalUnidade${index}" data-target="#modalUnidade${index}"><i class="fa fa-search"></i> Ampliar</button>
+                              </form:form>
+                           </p>
+                        </div>
+                        <div class="modal fade" id="modalUnidade${index}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                           <div class="modal-dialog modal-lg" role="document">
+                              <div class="modal-content">
+                                 <div class="modal-body">
+                                    <img src="${arquivoUnidade.caminhoArquivo}"/>
+                                 </div>
+                                 <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                 </div>
+                              </div>
+                              <!-- /.modal-content -->
+                           </div>
+                           <!-- /.modal-dialog -->
+                        </div>
+                     </c:otherwise>
+                     <c:set var="index" value="${index + 1}"/>
+                  </c:choose>     
+                </c:forEach>
             </div>
         </div>
     </div>

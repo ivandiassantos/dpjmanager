@@ -8,7 +8,7 @@ import br.com.dpjmanager.dao.PacoteDAO;
 import br.com.dpjmanager.entidades.dpjmanager.Pacote;
 
 @Repository
-public class PacoteDAOImpl extends DaoImpl<Pacote> implements PacoteDAO
+public class PacoteDAOImpl extends DaoImpl implements PacoteDAO
 {
 
    public void salvar(Pacote pacote)

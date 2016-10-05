@@ -9,14 +9,8 @@ import br.com.dpjmanager.entidades.dpjmanager.Pacote;
 import br.com.dpjmanager.entidades.dpjmanager.PacoteSolicitacao;
 
 @Repository
-public class PacoteSolicitacaoDAOImpl extends DaoImpl<PacoteSolicitacao> implements PacoteSolicitacaoDAO
+public class PacoteSolicitacaoDAOImpl extends DaoImpl implements PacoteSolicitacaoDAO
 {
-
-   public PacoteSolicitacaoDAOImpl()
-   {
-      super(PacoteSolicitacao.class);
-   }
-
    @Override
    public void salvar(PacoteSolicitacao pacoteSolicitacao)
    {

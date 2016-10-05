@@ -25,9 +25,12 @@ import br.com.dpjmanager.service.DashboardUnidadeService;
  */
 @Controller
 @Scope(value = WebApplicationContext.SCOPE_REQUEST)
-@RequestMapping("/dashboardUnidade")
+@RequestMapping(value = DashboardUnidadeController.URL_PADRAO_DASHBOARD_UNIDADE)
 public class DashboardUnidadeController
 {
+
+   public static final String URL_PADRAO_DASHBOARD_UNIDADE = "/restrito/dashboardUnidade";
+   private static final String URL_INICIO_DASHBOARD_UNIDADE = "/iniciarDashboardUnidade";
 
    @Autowired
    private DashboardUnidadeService dashboardUnidadeService;
@@ -37,7 +40,7 @@ public class DashboardUnidadeController
     * 
     * @return {@link ModelAndView}
     */
-   @RequestMapping(value = "/iniciarDashboardUnidade", method = RequestMethod.GET)
+   @RequestMapping(value = URL_INICIO_DASHBOARD_UNIDADE, method = RequestMethod.GET)
    public ModelAndView iniciarDashboardUnidade()
    {
       ModelAndView retorno = new ModelAndView(URLRetorno.DASHBOARD_POR_UNIDADE.getUrl());

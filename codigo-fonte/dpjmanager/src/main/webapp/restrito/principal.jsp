@@ -1,160 +1,107 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>DPJ Manager</title>
-    <link href="<c:url value='/resources/novo/bootstrap/dist/css/bootstrap.min.css'/>" rel="stylesheet">
-    <link href="<c:url value='/resources/novo/metisMenu/dist/metisMenu.min.css'/>" rel="stylesheet">
-    <link href="<c:url value='/resources/novo/dist/css/timeline.css'/>" rel="stylesheet">
-    <link href="<c:url value='/resources/novo/dist/css/sb-admin-2.css'/>" rel="stylesheet">
-    <link href="<c:url value='/resources/novo/morrisjs/morris.css'/>" rel="stylesheet">
-    <link href="<c:url value='/resources/novo/font-awesome/css/font-awesome.min.css'/>" rel="stylesheet" type="text/css">
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
-<body>
-    <div id="wrapper">
-        <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="<c:url value='/restrito/principal'/>">DPJ Manager</a>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib tagdir="/WEB-INF/tags/novo" prefix="customTags"%>
+<customTags:template>
+   <div class="row">
+	   <div class="col-lg-12">
+	       <h1 class="page-header">Dashboard - Diretoria</h1>
+	   </div>
+      <div class="col-lg-12">
+         <div class="panel panel-default">
+            <div class="panel-heading">
+               Faturamento - 2016
             </div>
-            <!-- /.navbar-header -->
-
-            <ul class="nav navbar-top-links navbar-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        &nbsp;Usu&aacute;rio&nbsp;<i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li>
-                           <a href="#">
-                              <i class="fa fa-sign-out fa-fw"></i> Sair
-                           </a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-user -->
-                </li>
-                <!-- /.dropdown -->
-            </ul>
-            <!-- /.navbar-top-links -->
-
-            <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-                        <li>
-                            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard </a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-group fa-fw"></i> Unidades <span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="<c:url value='/restrito/unidade/dashboardUnidade1.jsp'/>">UPJ - BASA</a>
-                                </li>
-                                <li>
-                                    <a href="#">UPJ - BRB</a>
-                                </li>
-                                <li>
-                                    <a href="#">UPJ - CAIXA</a>
-                                </li>
-                                <li>
-                                    <a href="#">UPJ - MB</a>
-                                </li>
-                                <li>
-                                    <a href="#">UPJ - BANPAR√Å</a>
-                                </li>
-                                <li>
-                                    <a href="#">OUTROS</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                    </ul>
-                </div>
-                <!-- /.sidebar-collapse -->
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+               <div id="faturamentoPorProjeto"></div>
+               <br/>
+               <table width="100%" class="table table-striped table-bordered table-hover" id="tabelaFaturamentoProjetos">
+                  <thead>
+                     <tr>
+                        <th>MÍs</th>
+                        <th>Valor Acumulado</th>
+                        <th>Meta Acumulada</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>Janeiro/2016</td>
+                        <td>3.000.000,00</td>
+                        <td>1.801.568,33</td>
+                     </tr>
+                     <tr>
+                        <td>Fevereiro/2016</td>
+                        <td>6.000.000,00</td>
+                        <td>5.739.268,77</td>
+                     </tr>
+                     <tr>
+                        <td>MarÁo/2016</td>
+                        <td>9.000.000,00</td>
+                        <td>8.172.535,88</td>
+                     </tr>
+                     <tr>
+                        <td>Abril/2016</td>
+                        <td>11.916.666,67</td>
+                        <td>10.663.259,34</td>
+                     </tr>
+                     <tr>
+                        <td>Maio/2016</td>
+                        <td>14.750.000,00</td>
+                        <td>13.088.074,81</td>
+                     </tr>
+                     <tr>
+                        <td>Junho/2016</td>
+                        <td>17.583.333,33</td>
+                        <td>14.841.384,60</td>
+                     </tr>         
+                  </tbody>
+               </table>
             </div>
-            <!-- /.navbar-static-side -->
-        </nav>
-        <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Dashboard - Diretoria</h1>
-                </div>
-                <div class="col-md-6 col-xs-6">
-                  <a href="#" class="thumbnail">
-                     <img src="<c:url value='/resources/novo/imagens/dashboard/DPJ1.png'/>"/>
-                  </a>
-                  <p>
-                     <button type="button" class="btn btn-default"><i class="fa fa-upload"></i> Substituir</button>
-                     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal"><i class="fa fa-search"></i> Ampliar</button>
-                  </p>
-                </div>
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <img src="<c:url value='/resources/novo/imagens/dashboard/DPJ1.png'/>"/>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                            </div>
-                        </div>
-                        <!-- /.modal-content -->
-                    </div>
-                    <!-- /.modal-dialog -->
-                </div>
-                <!-- /.modal -->
-                <div class="col-md-6 col-xs-6">
-                  <a href="#" class="thumbnail">
-                     <img src="<c:url value='/resources/novo/imagens/dashboard/DPJ2.png'/>"/>
-                  </a>
-                  <p>
-                     <button type="button" class="btn btn-default"><i class="fa fa-upload"></i> Substituir</button>
-                     <button type="button" class="btn btn-default"><i class="fa fa-search"></i> Ampliar</button>
-                  </p>
-                </div>
+            <!-- /.panel-body -->
+         </div>
+         <!-- /.panel -->
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-lg-4">
+         <div class="panel panel-default">
+            <div class="panel-heading">
+               UPJ-BASA
             </div>
-            <div class="row">
-                <div class="col-md-6 col-xs-6">
-                  <a href="#" class="thumbnail">
-                     <img src="<c:url value='/resources/novo/imagens/dashboard/DPJ3.png'/>"/>
-                  </a>
-                  <p>
-                     <button type="button" class="btn btn-default"><i class="fa fa-upload"></i> Substituir</button>
-                     <button type="button" class="btn btn-default"><i class="fa fa-search"></i> Ampliar</button>
-                  </p>
-                </div>
-                <div class="col-md-6 col-xs-6">
-                  <a href="#" class="thumbnail">
-                     <img src="<c:url value='/resources/novo/imagens/dashboard/DPJ4.png'/>"/>
-                  </a>
-                  <p>
-                     <button type="button" class="btn btn-default"><i class="fa fa-upload"></i> Substituir</button>
-                     <button type="button" class="btn btn-default"><i class="fa fa-search"></i> Ampliar</button>
-                  </p>
-                </div>
+            <div class="panel-body">
+               <p></p>
             </div>
-        </div>
-    </div>
-    <script src="<c:url value='/resources/novo/jquery/dist/jquery.min.js'/>"></script>
-    <script src="<c:url value='/resources/novo/bootstrap/dist/js/bootstrap.min.js'/>"></script>
-    <script src="<c:url value='/resources/novo/metisMenu/dist/metisMenu.min.js'/>"></script>
-    <script src="<c:url value='/resources/novo/raphael/raphael-min.js'/>"></script>
-    <script src="<c:url value='/resources/novo/morrisjs/morris.min.js'/>"></script>
-    <script src="<c:url value='/resources/novo/dist/js/sb-admin-2.js'/>"></script>
-</body>
-</html>
+            <div class="panel-footer">
+               Panel Footer
+            </div>
+         </div>
+      </div>
+   </div>
+   <script type="text/javascript">
+	    $(function() {
+	        obtemGraficoFaturamentoPorProjeto();
+	        $('#tabelaFaturamentoProjetos').DataTable();
+	    });
+	
+	    function obtemGraficoFaturamentoPorProjeto(){
+	    	 $.getJSON("${pageContext.request.contextPath}/restrito/dashboard/listarFaturamentoProjeto", function(resultado){
+			       var months = ["Janeiro/2016", "Fevereiro/2016", "MarÁo/2016", "Abril/2016", "Maio/2016", "Junho/2016", "Julho/2016", "Agosto/2016", "Setembro/2016", "Outubro/2016", "Novembro/2016", "Dezembro/2016"];
+			       Morris.Line({
+			    	   element: 'faturamentoPorProjeto',
+			    	   data: resultado,
+	               xkey: 'mesAnoFaturamentoProjeto',
+	               ykeys: ['valorMetaAcumulada', 'valorAcumulado'],
+	               labels: ['Meta Acumulada', 'Valor Acumulado'],
+	               xLabelFormat: function(x) { // <--- x.getMonth() returns valid index
+	            	   var month = months[x.getMonth()];
+	            	   return month;
+	            	},
+	               dateFormat: function(x) {
+	            	   var month = months[new Date(x).getMonth()];
+	            	   return month;
+	               },
+	             }); 
+	       }); 
+	    }
+    </script>
+</customTags:template>

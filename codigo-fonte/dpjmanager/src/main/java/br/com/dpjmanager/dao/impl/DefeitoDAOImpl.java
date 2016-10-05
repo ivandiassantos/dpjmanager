@@ -6,10 +6,9 @@ import java.util.List;
 import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 import br.com.dpjmanager.dao.DefeitoDAO;
-import br.com.dpjmanager.entidades.cq.Defeito;
 
 @Repository
-public class DefeitoDAOImpl extends DaoImpl<Defeito> implements DefeitoDAO
+public class DefeitoDAOImpl extends DaoImpl implements DefeitoDAO
 {
 
    @Override

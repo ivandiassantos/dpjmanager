@@ -1,63 +1,103 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib tagdir="/WEB-INF/tags" prefix="customTags"%>
+<%@ taglib tagdir="/WEB-INF/tags/novo" prefix="customTags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<customTags:templateFuncionalidades nomeIconeFuncionalidade="icon-dashboard" tituloFuncionalidade="Dashboard - UPJ BASA">
-   <fieldset>
-      <c:forEach items="${listaDashboardUnidade}" var="dashboardUnidadeDTO">
-         <div class="info">
-            <h3>${dashboardUnidadeDTO.nomePacote}</h3>
+<customTags:template>
+   <div class="row">
+      <div class="col-lg-12">
+         <div class="panel panel-default">
+            <div class="panel-heading">
+               Pacotes
+            </div>
+            <!-- .panel-heading -->
+            <div class="panel-body">
+               <div class="panel-group" id="accordion">
+                  <c:set var="painel" value="${0}"/>
+                  <c:forEach items="${listaDashboardUnidade}" var="dashboardUnidadeDTO">
+	                  <div class="panel panel-default">
+	                     <div class="panel-heading">
+	                        <h4 class="panel-title">
+	                           <a data-toggle="collapse" data-parent="#accordion" href="#painel${painel}">${dashboardUnidadeDTO.nomePacote}</a>
+	                        </h4>
+	                     </div>
+	                     <div id="painel${painel}" class="panel-collapse collapse">
+	                         <div class="panel-body">
+	                             <c:forEach items="${dashboardUnidadeDTO.listaSolicitacoes}" var="solicitacaoDTO">
+							              <div class="info">
+							                <h4>${solicitacaoDTO.descricaoSolicitacao}</h4>
+							                Período:&nbsp;<fmt:formatDate value="${dashboardUnidadeDTO.dataInicio}" pattern="dd/MM/yyyy"/>&nbsp;a&nbsp;<fmt:formatDate value="${dashboardUnidadeDTO.dataFinal}" pattern="dd/MM/yyyy"/>
+							              </div>
+							              <div class="row">
+							                 <div class="col-md-1"></div>
+							                 <div class="col-md-1">Projeto</div>
+							                 <div class="col-md-1">Qualidade</div>
+							                 <div class="col-md-1">Qualidade</div>
+							              </div>
+							              <div class="row">
+                                      <div class="col-md-1">
+                                          <img alt="Expandir" title="Expandir" src="<c:url value='/resources/images/icone_abre_detalhamento.png'/>"/>
+                                      </div>
+                                      <div class="col-md-1">
+                                      </div>
+                                      <div class="col-md-1">
+                                      </div>
+                                      <div class="col-md-1">
+                                      </div>
+                                   </div>
+                                   <table class="table table-striped">
+							                 <thead>
+							                     <th></th>
+							                     <th>Projetos</th>
+							                     <th>Qualidade</th>
+							                     <th>Produtividade</th>
+							                  </thead>
+	                                    <tbody>
+	                                       <c:set var="index" value="${0}"/>
+	                                       <c:forEach items="${solicitacaoDTO.projetosEnvolvidos}" var="projetoDTO">
+	                                          <tr>
+								                        <td>
+								                           <c:set var="index" value="${index + 1}"/>
+								                           <a href="#" onclick="obtemDetalhamentoDisciplinasPorSolicitacaoProjeto(divDetalheDisciplina${index}, ${projetoDTO.codProjeto}, ${solicitacaoDTO.codSolicitacao});">
+								                              <img alt="Expandir" title="Expandir" src="<c:url value='/resources/images/icone_abre_detalhamento.png'/>"/>
+								                           </a>
+								                        </td>
+								                        <td>
+								                           <a href="<c:url value='/dashboardUnidade/obtemDashboardPorProjetoSolicitacao/${projetoDTO.codProjeto}/${solicitacaoDTO.codSolicitacao}'/>">
+								                             ${projetoDTO.nomeProjeto}
+								                           </a>
+								                        </td>
+								                        <td>
+								                           <i class="icon-thumbs-up-alt"></i>
+								                        </td>
+								                        <td>
+								                           <i class="icon-thumbs-down-alt"></i>
+								                        </td>
+	                                          </tr>
+								                     <tr id="linhaDetalheDisciplina${index}" style="display:none;">
+								                        <td colspan="4">
+								                           <div id="divDetalheDisciplina${index}">
+								                           </div>
+								                        </td>
+								                     </tr>
+	                                       </c:forEach>
+	                                    </tbody>
+                                    </table>
+                                 </c:forEach>
+	                         </div>
+	                     </div>
+	                  </div>
+	                  <c:set var="painel" value="${painel + 1}"/>
+                  </c:forEach>
+               </div>
          </div>
-         <br/>
-         <div class="text">
-           <c:set var="index" value="${0}"/>
-	        <c:forEach items="${dashboardUnidadeDTO.listaSolicitacoes}" var="solicitacaoDTO">
-		        <div class="info">
-		          <h4>${solicitacaoDTO.descricaoSolicitacao}</h4>
-		          Período:&nbsp;<fmt:formatDate value="${dashboardUnidadeDTO.dataInicio}" pattern="dd/MM/yyyy"/>&nbsp;a&nbsp;<fmt:formatDate value="${dashboardUnidadeDTO.dataFinal}" pattern="dd/MM/yyyy"/>
-		        </div>
-		        <table class="table table-striped">
-		          <thead>
-		             <th></th>
-		             <th>Projetos</th>
-		             <th>Qualidade</th>
-		             <th>Produtividade</th>
-		          </thead>
-		          <tbody>
-		             <c:forEach items="${solicitacaoDTO.projetosEnvolvidos}" var="projetoDTO">
-			             <tr>
-			               <td>
-			                  <c:set var="index" value="${index + 1}"/>
-			                  <a href="#" onclick="obtemDetalhamentoDisciplinasPorSolicitacaoProjeto(divDetalheDisciplina${index}, ${projetoDTO.codProjeto}, ${solicitacaoDTO.codSolicitacao});">
-			                     <img alt="Expandir" title="Expandir" src="<c:url value='/resources/images/icone_abre_detalhamento.png'/>"/>
-			                  </a>
-			               </td>
-			               <td>
-			                  <a href="<c:url value='/dashboardUnidade/obtemDashboardPorProjetoSolicitacao/${projetoDTO.codProjeto}/${solicitacaoDTO.codSolicitacao}'/>">
-	                          ${projetoDTO.nomeProjeto}
-	                        </a>
-			               </td>
-			               <td>
-			                  <i class="icon-thumbs-up-alt"></i>
-			               </td>
-			               <td>
-			                  <i class="icon-thumbs-down-alt"></i>
-			               </td>
-			             </tr>
-			             <tr>
-			               <td colspan="4">
-			                  <div id="divDetalheDisciplina${index}">
-			                  </div>
-			               </td>
-			             </tr>
-		             </c:forEach>
-		          </tbody>
-		        </table>
-	        </c:forEach>
-	      </div>
-      </c:forEach>
-   </fieldset>
+         <!-- .panel-body -->
+        </div>
+        <!-- /.panel -->
+       </div>
+       <!-- /.col-lg-12 -->
+   </div>
+   <!-- /.row -->
    <script>
 	   function obtemDetalhamentoDisciplinasPorSolicitacaoProjeto(nomeDivDetalhamento, codProjeto, codSolicitacao){
 		    $.getJSON("${pageContext.request.contextPath}/dashboardUnidade/obtemDetalhamentoDisciplinaPorProjetoSolicitacao?codProjeto="+codProjeto+"&codSolicitacao="+codSolicitacao, function(resultado){
@@ -99,4 +139,4 @@
 // 	      }
    </script>
    <script type="text/javascript" src=""/>
-</customTags:templateFuncionalidades>
+</customTags:template>

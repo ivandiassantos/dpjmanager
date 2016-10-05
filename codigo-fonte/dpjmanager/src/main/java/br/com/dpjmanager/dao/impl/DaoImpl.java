@@ -7,7 +7,12 @@ import br.com.dpjmanager.dao.Dao;
 import lombok.Getter;
 import lombok.Setter;
 
-public abstract class DaoImpl<ENTIDADE> implements Dao<ENTIDADE>
+/**
+ * Classe DAO base do projeto.
+ * 
+ * @author Agosto/2016: Ivan Dias <DD>
+ */
+public abstract class DaoImpl implements Dao
 {
 
    @Setter
@@ -22,16 +27,4 @@ public abstract class DaoImpl<ENTIDADE> implements Dao<ENTIDADE>
    @Getter
    @PersistenceContext(unitName = "cqPU")
    private EntityManager entityManagerCQ;
-   private Class<ENTIDADE> classe;
-
-   public DaoImpl(Class<ENTIDADE> classe)
-   {
-      this.classe = classe;
-   }
-
-   public DaoImpl()
-   {
-
-   }
-
 }

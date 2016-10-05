@@ -4,7 +4,7 @@ package br.com.dpjmanager.dao;
 import java.util.List;
 import br.com.dpjmanager.entidades.dpjmanager.Pacote;
 
-public interface PacoteDAO extends Dao<Pacote>
+public interface PacoteDAO extends Dao
 {
 
    void salvar(Pacote pacote);

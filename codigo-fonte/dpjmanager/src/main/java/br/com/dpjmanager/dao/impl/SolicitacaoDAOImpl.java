@@ -8,14 +8,8 @@ import br.com.dpjmanager.dao.SolicitacaoDAO;
 import br.com.dpjmanager.entidades.cq.Solicitacao;
 
 @Repository
-public class SolicitacaoDAOImpl extends DaoImpl<Solicitacao> implements SolicitacaoDAO
+public class SolicitacaoDAOImpl extends DaoImpl implements SolicitacaoDAO
 {
-
-   public SolicitacaoDAOImpl()
-   {
-      super(Solicitacao.class);
-   }
-
    @SuppressWarnings("unchecked")
    @Override
    public List<Solicitacao> listaSolicitacoesPorNome(String nomeSolicitacao, List<String> listaIdsSolicitacoes)

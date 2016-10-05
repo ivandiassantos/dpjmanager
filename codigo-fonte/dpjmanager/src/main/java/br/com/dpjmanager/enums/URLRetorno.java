@@ -16,6 +16,9 @@ import lombok.Getter;
 public enum URLRetorno
 {
    PAGINA_AUTENTICACAO("/login"),
+      REDIRECT_URL_LOGIN("redirect:/login"),
+      REDIRECT_PAGINA_INICIAR_ALTERACAO_SENHA_PRIMEIRO_ACESSO("redirect:/restrito/usuario/iniciarAlteracaoSenhaAcesso"),
+      PAGINA_ALTERACAO_SENHA_PRIMEIRO_ACESSO("restrito/usuarios/alterarSenhaPrimeiroAcesso"),
       PAGINA_PRINCIPAL("/restrito/principal"),
    INICIAR_PESQUISA_PACOTES("restrito/pacote/pesquisarPacotes"),
       INICIAR_INCLUSAO_PACOTE("restrito/pacote/incluirPacote"),
@@ -25,7 +28,9 @@ public enum URLRetorno
       DASHBOARD_POR_UNIDADE("/restrito/unidade/dashboardUnidade"),
       DETALHAMENTO_ATIVIDADES_POR_PROJETO_SOLICITACAO("/restrito/unidade/detalhamentoAtividadesPorProjetoSolicitacao"),
       DETALHAMENTO_ATIVIDADES_POR_PROJETO_DISCIPLINA_SOLICITACAO("/restrito/unidade/detalhamentoAtividadesPorProjetoDisciplinaSolicitacao"),
-      INICIAR_EDICAO_PACOTE("/restrito/pacote/editarPacote");
+      INICIAR_EDICAO_PACOTE("/restrito/pacote/editarPacote"),
+      INICIAR_DASHBOARD_UNIDADE("/restrito/unidade/dashboardUnidade1"),
+      INICIAR_PESQUISA_UNIDADES("/restrito/unidade/pesquisarUnidades");
 
    @Getter
    private String url;

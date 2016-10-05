@@ -1,7 +1,12 @@
 
 package br.com.dpjmanager.dao;
 
-public interface Dao<ENTIDADE>
+/**
+ * Interface DAO Padrão.
+ * 
+ * @author Agosto/2016: Ivan Dias <DD>
+ */
+public interface Dao
 {
 
 }

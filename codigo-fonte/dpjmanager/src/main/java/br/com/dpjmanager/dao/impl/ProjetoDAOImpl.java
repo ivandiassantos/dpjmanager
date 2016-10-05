@@ -7,7 +7,7 @@ import br.com.dpjmanager.dao.ProjetoDAO;
 import br.com.dpjmanager.entidades.rhour.Projeto;
 
 @Repository
-public class ProjetoDAOImpl extends DaoImpl<Projeto> implements ProjetoDAO
+public class ProjetoDAOImpl extends DaoImpl implements ProjetoDAO
 {
    @Override
    public List<Projeto> obtemProjetosPorSolicitacao(String idSolicitacao)

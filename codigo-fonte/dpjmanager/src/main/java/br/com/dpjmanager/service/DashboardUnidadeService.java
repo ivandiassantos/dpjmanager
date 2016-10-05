@@ -15,4 +15,7 @@ public interface DashboardUnidadeService
 
    List<DetalhamentoAtividadeDTO> obtemDetalhamentoAtividadePorProjetoDisciplinaSolicitacao(Long codProjeto, String nomeDisciplina,
       Long codSolicitacao);
+
+   void obtemDadosFaturamentoPorProjeto();
+
 }

@@ -27,5 +27,8 @@
                 </li>
             </ul>
         </li>
+        <li>
+            <a href="<c:url value='/restrito/pacote/iniciarPesquisaPacotes'/>"><i class="fa fa-briefcase fa-fw"></i> Pacotes </a>
+        </li>
     </ul>
 </div>

@@ -32,11 +32,13 @@ import br.com.dpjmanager.util.MensagemUtil;
  * @author Abril/2016: Ivan Dias <DD>
  */
 @Controller
-@RequestMapping("/pacote")
+@RequestMapping(PacoteController.URL_PADRAO_PACOTES)
 @Scope(value = WebApplicationContext.SCOPE_REQUEST)
 public class PacoteController
 {
 
+   public static final String URL_PADRAO_PACOTES = "/restrito/pacote";
+   private static final String URL_INICIO_PESQUISA_PACOTES = "/iniciarPesquisaPacotes";
    private static Logger logger = Logger.getLogger(PacoteController.class);
    @Autowired
    private PacoteService pacoteService;
@@ -52,7 +54,7 @@ public class PacoteController
     * 
     * @return {@link ModelAndView}
     */
-   @RequestMapping(value = "/iniciarPesquisaPacotes", method = RequestMethod.GET)
+   @RequestMapping(value = URL_INICIO_PESQUISA_PACOTES, method = RequestMethod.GET)
    public ModelAndView iniciarPesquisaPacotes()
    {
       ModelAndView retorno = new ModelAndView(URLRetorno.INICIAR_PESQUISA_PACOTES.getUrl());

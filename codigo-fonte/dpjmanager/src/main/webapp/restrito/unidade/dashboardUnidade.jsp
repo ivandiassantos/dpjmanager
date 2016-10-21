@@ -28,23 +28,6 @@
 							                <h4>${solicitacaoDTO.descricaoSolicitacao}</h4>
 							                Período:&nbsp;<fmt:formatDate value="${dashboardUnidadeDTO.dataInicio}" pattern="dd/MM/yyyy"/>&nbsp;a&nbsp;<fmt:formatDate value="${dashboardUnidadeDTO.dataFinal}" pattern="dd/MM/yyyy"/>
 							              </div>
-							              <div class="row">
-							                 <div class="col-md-1"></div>
-							                 <div class="col-md-1">Projeto</div>
-							                 <div class="col-md-1">Qualidade</div>
-							                 <div class="col-md-1">Qualidade</div>
-							              </div>
-							              <div class="row">
-                                      <div class="col-md-1">
-                                          <img alt="Expandir" title="Expandir" src="<c:url value='/resources/images/icone_abre_detalhamento.png'/>"/>
-                                      </div>
-                                      <div class="col-md-1">
-                                      </div>
-                                      <div class="col-md-1">
-                                      </div>
-                                      <div class="col-md-1">
-                                      </div>
-                                   </div>
                                    <table class="table table-striped">
 							                 <thead>
 							                     <th></th>
@@ -55,10 +38,10 @@
 	                                    <tbody>
 	                                       <c:set var="index" value="${0}"/>
 	                                       <c:forEach items="${solicitacaoDTO.projetosEnvolvidos}" var="projetoDTO">
+	                                          <c:set var="index" value="${index + 1}"/>
 	                                          <tr>
 								                        <td>
-								                           <c:set var="index" value="${index + 1}"/>
-								                           <a href="#" onclick="obtemDetalhamentoDisciplinasPorSolicitacaoProjeto(divDetalheDisciplina${index}, ${projetoDTO.codProjeto}, ${solicitacaoDTO.codSolicitacao});">
+								                           <a href="#" onclick="obtemDetalhamentoDisciplinasPorSolicitacaoProjeto(linhaDetalheDisciplina${index}, divDetalheDisciplina${index}, ${projetoDTO.codProjeto}, ${solicitacaoDTO.codSolicitacao});">
 								                              <img alt="Expandir" title="Expandir" src="<c:url value='/resources/images/icone_abre_detalhamento.png'/>"/>
 								                           </a>
 								                        </td>
@@ -99,8 +82,8 @@
    </div>
    <!-- /.row -->
    <script>
-	   function obtemDetalhamentoDisciplinasPorSolicitacaoProjeto(nomeDivDetalhamento, codProjeto, codSolicitacao){
-		    $.getJSON("${pageContext.request.contextPath}/dashboardUnidade/obtemDetalhamentoDisciplinaPorProjetoSolicitacao?codProjeto="+codProjeto+"&codSolicitacao="+codSolicitacao, function(resultado){
+	   function obtemDetalhamentoDisciplinasPorSolicitacaoProjeto(idLinhaDetalheDisciplina, nomeDivDetalhamento, codProjeto, codSolicitacao){
+		    $.getJSON("${pageContext.request.contextPath}/restrito/dashboardUnidade/obtemDetalhamentoDisciplinaPorProjetoSolicitacao?codProjeto="+codProjeto+"&codSolicitacao="+codSolicitacao, function(resultado){
 		    	  $(nomeDivDetalhamento).append("<table class='table table-striped table-bordered'>");
 		    	  $(nomeDivDetalhamento).append("<th>Disciplina</th>");
 		    	  $(nomeDivDetalhamento).append("<th>Horas Planejadas</th>");
@@ -111,12 +94,12 @@
 		    	  $(nomeDivDetalhamento).append("</thead>");
 		    	  $(nomeDivDetalhamento).append("<tbody>");
 		        $.each(resultado, function(i, detalhamentoDisciplinaDTO){
-		        	   $(nomeDivDetalhamento).append("<tr><td><a href='${pageContext.request.contextPath}/dashboardUnidade/obtemDetalhamentoAtividadesPorProjetoDisciplinaSolicitacao?codProjeto="+codProjeto+"&nomeDisciplina="+detalhamentoDisciplinaDTO.nomeDisciplina+"&codSolicitacao="+codSolicitacao+"'>"+detalhamentoDisciplinaDTO.nomeDisciplina+"</a></td><td>"+detalhamentoDisciplinaDTO.totalHorasPlanejadas+"</td><td>"+detalhamentoDisciplinaDTO.totalHorasRealizadas+"</td><td>"+detalhamentoDisciplinaDTO.quantidadeDefeitos+"</td><td>"+detalhamentoDisciplinaDTO.quantidadeHorasGastasDefeitos+"</td><td></td></tr>");
+		        	   $(nomeDivDetalhamento).append("<tr><td><a href='${pageContext.request.contextPath}/restrito/dashboardUnidade/obtemDetalhamentoAtividadesPorProjetoDisciplinaSolicitacao?codProjeto="+codProjeto+"&nomeDisciplina="+detalhamentoDisciplinaDTO.nomeDisciplina+"&codSolicitacao="+codSolicitacao+"'>"+detalhamentoDisciplinaDTO.nomeDisciplina+"</a></td><td>"+detalhamentoDisciplinaDTO.totalHorasPlanejadas+"</td><td>"+detalhamentoDisciplinaDTO.totalHorasRealizadas+"</td><td>"+detalhamentoDisciplinaDTO.quantidadeDefeitos+"</td><td>"+detalhamentoDisciplinaDTO.quantidadeHorasGastasDefeitos+"</td><td></td></tr>");
 		        });
 		        $(nomeDivDetalhamento).append("</tbody>");
 		        $(nomeDivDetalhamento).append("</table>");
 		    });
-		    
+		    $(idLinhaDetalheDisciplina).show();
 	   }
 
 // 	   function obtemDetalhamentoAtividadesPorDisciplina(codProjeto, nomeDisciplina, codSolicitacao, nomeDivDetalhamentoAtividade){

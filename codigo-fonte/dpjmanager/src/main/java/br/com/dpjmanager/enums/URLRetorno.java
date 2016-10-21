@@ -20,7 +20,7 @@ public enum URLRetorno
       REDIRECT_PAGINA_INICIAR_ALTERACAO_SENHA_PRIMEIRO_ACESSO("redirect:/restrito/usuario/iniciarAlteracaoSenhaAcesso"),
       PAGINA_ALTERACAO_SENHA_PRIMEIRO_ACESSO("restrito/usuarios/alterarSenhaPrimeiroAcesso"),
       PAGINA_PRINCIPAL("/restrito/principal"),
-   INICIAR_PESQUISA_PACOTES("restrito/pacote/pesquisarPacotes"),
+      INICIAR_PESQUISA_PACOTES("restrito/pacotes/pesquisarPacotes"),
       INICIAR_INCLUSAO_PACOTE("restrito/pacote/incluirPacote"),
       REDIRECT_INICIAR_PESQUISA_PACOTES("redirect:/pacote/iniciarPesquisaPacotes"),
       DETALHAR_PACOTE("restrito/pacote/detalharPacote"),

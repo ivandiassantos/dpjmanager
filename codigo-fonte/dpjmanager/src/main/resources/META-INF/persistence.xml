@@ -30,6 +30,12 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
 		<class>br.com.dpjmanager.entidades.dpjmanager.ArquivoDashboardUnidade</class>
 		<class>br.com.dpjmanager.entidades.dpjmanager.ArquivoDashboardDiretoria</class>
 		<class>br.com.dpjmanager.entidades.dpjmanager.FaturamentoProjeto</class>
+      <class>br.com.dpjmanager.entidades.dpjmanager.Projeto</class>
+      <class>br.com.dpjmanager.entidades.dpjmanager.Faturamento</class>
+      <class>br.com.dpjmanager.entidades.dpjmanager.ProjetoFase</class>
+      <class>br.com.dpjmanager.entidades.dpjmanager.Fase</class>
+      <class>br.com.dpjmanager.entidades.dpjmanager.OrdemServico</class>
+      <class>br.com.dpjmanager.entidades.dpjmanager.NotaFiscal</class>
 	</persistence-unit>
 	<persistence-unit name="rhourPU" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>

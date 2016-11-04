@@ -42,12 +42,6 @@ public class Faturamento implements Serializable
    @Getter
    @Setter
    @ManyToOne(fetch = FetchType.LAZY)
-   @JoinColumn(name = "COD_ORDEM_SERVICO", referencedColumnName = "COD_ORDEM_SERVICO")
-   private OrdemServico ordemServico;
-
-   @Getter
-   @Setter
-   @ManyToOne(fetch = FetchType.LAZY)
    @JoinColumn(name = "COD_PROJETO", referencedColumnName = "COD_PROJETO")
    private Projeto projeto;
 
@@ -82,5 +76,32 @@ public class Faturamento implements Serializable
    @Setter
    @Column(name = "NUM_SOLICITACAO")
    private String numSolicitacao;
+   
+   @Getter
+   @Setter
+   @Column(name = "NUM_ORDEM_SERVICO")
+   private String numOrdemServico;
+   
+   @Getter
+   @Setter
+   @Column(name = "NUM_NOTA_FISCAL")
+   private String numNotaFiscal;
+   
+   @Getter
+   @Setter
+   @Column(name = "PONTO_FUNCAO_ESTIMADO")
+   private String pontoFuncaoEstimado;
+   
+   @Getter
+   @Setter
+   @Column(name = "PONTO_FUNCAO_DETALHADO")
+   private String pontoFuncaoDetalhado;
+   
+   @Getter
+   @Setter
+   @Column(name = "QTD_HORAS_REALIZADAS")
+   private String qtdHorasRealizadas;
+   
+   
 
 }

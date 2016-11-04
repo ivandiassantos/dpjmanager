@@ -6,7 +6,12 @@
          <li><a href="<c:url value='/restrito/principal'/>"><i class="fa fa-tachometer"></i> Dashboard </a></li>
          <li><a><i class="fa fa-users"></i> Unidades <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu" style="display: none">
-               <li><a href="#">UPJ BASA</a></li>
+               <li><a href="#"><i class="fa fa-university"></i> UPJ BASA</a></li>
+            </ul>
+         </li>
+         <li><a><i class="fa fa-database"></i> Cadastros <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu" style="display: none">
+               <li><a href="#"><i class="fa fa-folder"></i> Pacotes</a></li>
             </ul>
          </li>
       </ul>

@@ -20,6 +20,11 @@
   <link href="<c:url value='/resources/css/floatexamples.css'/>" rel="stylesheet" type="text/css" />
   <script src="<c:url value='/resources/js/jquery.min.js'/>"></script>
   <script src="<c:url value='/resources/js/nprogress.js'/>"></script>
+  <link href="<c:url value='/resources/js/datatables/jquery.dataTables.min.css'/>" rel="stylesheet" type="text/css" />
+  <link href="<c:url value='/resources/js/datatables/buttons.bootstrap.min.css'/>" rel="stylesheet" type="text/css" />
+  <link href="<c:url value='/resources/js/datatables/fixedHeader.bootstrap.min.css'/>" rel="stylesheet" type="text/css" />
+  <link href="<c:url value='/resources/js/datatables/responsive.bootstrap.min.css'/>" rel="stylesheet" type="text/css" />
+  <link href="<c:url value='/resources/js/datatables/scroller.bootstrap.min.css'/>" rel="stylesheet" type="text/css" />
   <!--[if lt IE 9]>
       <script src="<c:url value='/resources/assets/js/ie8-responsive-file-warning.js'/>"></script>
   <![endif]-->
@@ -130,5 +135,19 @@
   <script type="text/javascript" src="<c:url value='/resources/js/maps/jquery-jvectormap-us-aea-en.js'/>"></script>
   <script src="<c:url value='/resources/js/pace/pace.min.js'/>"></script>
   <script src="<c:url value='/resources/js/skycons/skycons.min.js'/>"></script>
+  <script src="<c:url value='/resources/js/datatables/jquery.dataTables.min.js'/>"></script>
+  <script src="<c:url value='/resources/js/datatables/dataTables.bootstrap.js'/>"></script>
+  <script src="<c:url value='/resources/js/datatables/dataTables.buttons.min.js'/>"></script>
+  <script src="<c:url value='/resources/js/datatables/buttons.bootstrap.min.js'/>"></script>
+  <script src="<c:url value='/resources/js/datatables/jszip.min.js'/>"></script>
+  <script src="<c:url value='/resources/js/datatables/pdfmake.min.js'/>"></script>
+  <script src="<c:url value='/resources/js/datatables/vfs_fonts.js'/>"></script>
+  <script src="<c:url value='/resources/js/datatables/buttons.html5.min.js'/>"></script>
+  <script src="<c:url value='/resources/js/datatables/buttons.print.min.js'/>"></script>
+  <script src="<c:url value='/resources/js/datatables/dataTables.fixedHeader.min.js'/>"></script>
+  <script src="<c:url value='/resources/js/datatables/dataTables.keyTable.min.js'/>"></script>
+  <script src="<c:url value='/resources/js/datatables/dataTables.responsive.min.js'/>"></script>
+  <script src="<c:url value='/resources/js/datatables/responsive.bootstrap.min.js'/>"></script>
+  <script src="<c:url value='/resources/js/datatables/dataTables.scroller.min.js'/>"></script>
 </body>
 </html>

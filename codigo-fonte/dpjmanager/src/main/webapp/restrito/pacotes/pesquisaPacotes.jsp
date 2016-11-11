@@ -35,7 +35,7 @@
 		<div class="form-group">
 			<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
 				<button type="submit" class="btn btn-primary">Pesquisar</button>
-				<button type="submit" class="btn btn-success">Novo</button>
+				<a href="<c:url value='/restrito/pacotes/iniciarInclusaoPacote'/>" class="btn btn-success">Novo</a>
 			</div>
 		</div>
 		<div class="col-md-12 col-sm-12 col-xs-12">
@@ -65,5 +65,5 @@
 			</table>
 		</div>
 	</form>
-	<script src="<c:url value='/restrito/js/pacotes/pacotes.js'/>"></script>
+	<script src="<c:url value='/restrito/js/pacotes/pesquisaPacotes.js'/>"></script>
 </customTags:templateFuncionalidades>

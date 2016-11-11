@@ -1,5 +1,5 @@
 /**
- * Codificação Javascript das funcionalidades referentes a pacotes.
+ * Codificação Javascript referente a pesquisa de pacotes.
  */
 
 $(document).ready(function() {

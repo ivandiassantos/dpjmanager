@@ -50,14 +50,13 @@
 				<button type="submit" class="btn btn-success">Novo</button>
 			</div>
 		</div>
-		
-		
-		<div class="row">
-
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                  <table id="datatable" class="table table-striped table-bordered">
-                    <thead>
-                      <tr>
+          
+          <div class="col-md-12 col-sm-12 col-xs-12">
+			<table id="tabelaPacotes"
+				class="table table-striped table-bordered dt-responsive nowrap"
+				cellspacing="0" width="100%">
+				<thead>
+					<tr>
                         <th>Pacote</th>
                         <th>Solicitação</th>
                         <th>Projeto</th>
@@ -71,16 +70,23 @@
                         <th>Recebido R$</th>
                         <th>PF/Horas</th>
                         <th>Ações</th>
-                      </tr>
-                    </thead>
-
-                    <tbody>
-
-                    </tbody>
-                  </table>
-                </div>
-          </div>
+					</tr>
+				</thead>
+				<tbody>
+				   <c:forEach var="pacoteDTO" items="${listaPacotes}">
+			         <tr>
+			            <td></td>
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                  </tr>
+				   </c:forEach>
+				</tbody>
+			</table>
+		</div>
 	</form>
+	<script src="<c:url value='/restrito/js/pacotes/pacotes.js'/>"></script>
 	
 	
 </customTags:templateFuncionalidades>

@@ -19,7 +19,9 @@ public enum URLRetorno
       REDIRECT_URL_LOGIN("redirect:/login"),
       PAGINA_PRINCIPAL("/restrito/principal"),
       PAGINA_PESQUISA_FATURAMENTO("/restrito/faturamentos/pesquisaFaturamento"),
-      PAGINA_PESQUISA_PACOTES("/restrito/pacotes/pesquisaPacotes");
+      PAGINA_PESQUISA_PACOTES("/restrito/pacotes/pesquisaPacotes"),
+      REDIRECT_INICIAR_PESQUISA_PACOTES("redirect:/restrito/pacotes/iniciarPesquisaPacotes"),
+      INICIAR_INCLUSAO_PACOTE("restrito/pacotes/incluirPacote");
 
    @Getter
    private String url;

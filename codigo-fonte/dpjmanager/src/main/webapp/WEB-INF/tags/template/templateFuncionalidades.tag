@@ -18,13 +18,14 @@
   <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/maps/jquery-jvectormap-2.0.3.css'/>" />
   <link href="<c:url value='/resources/css/icheck/flat/green.css'/>" rel="stylesheet" />
   <link href="<c:url value='/resources/css/floatexamples.css'/>" rel="stylesheet" type="text/css" />
-  <script src="<c:url value='/resources/js/jquery.min.js'/>"></script>
+  <script src="<c:url value='/resources/js/jquery.js'/>"></script>
   <script src="<c:url value='/resources/js/nprogress.js'/>"></script>
   <link href="<c:url value='/resources/js/datatables/jquery.dataTables.min.css'/>" rel="stylesheet" type="text/css" />
   <link href="<c:url value='/resources/js/datatables/buttons.bootstrap.min.css'/>" rel="stylesheet" type="text/css" />
   <link href="<c:url value='/resources/js/datatables/fixedHeader.bootstrap.min.css'/>" rel="stylesheet" type="text/css" />
   <link href="<c:url value='/resources/js/datatables/responsive.bootstrap.min.css'/>" rel="stylesheet" type="text/css" />
   <link href="<c:url value='/resources/js/datatables/scroller.bootstrap.min.css'/>" rel="stylesheet" type="text/css" />
+   <link href="<c:url value='/resources/css/jquery-ui.css'/>" rel="stylesheet" type="text/css" />
   <!--[if lt IE 9]>
       <script src="<c:url value='/resources/assets/js/ie8-responsive-file-warning.js'/>"></script>
   <![endif]-->
@@ -108,6 +109,7 @@
   </div>
   <script src="<c:url value='/resources/js/bootstrap.min.js'/>"></script>
   <!-- bootstrap progress js -->
+  <script src="<c:url value='/resources/js/jquery-ui.js'/>"></script>
   <script src="<c:url value='/resources/js/progressbar/bootstrap-progressbar.min.js'/>"></script>
   <script src="<c:url value='/resources/js/nicescroll/jquery.nicescroll.min.js'/>"></script>
   <!-- icheck -->

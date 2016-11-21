@@ -19,9 +19,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import br.com.dpjmanager.constantes.UrlRetorno;
 import br.com.dpjmanager.entidades.dpjmanager.Usuario;
 import br.com.dpjmanager.enums.ChaveMensagem;
-import br.com.dpjmanager.enums.URLRetorno;
+import br.com.dpjmanager.enums.PaginaRetorno;
 import br.com.dpjmanager.util.MensagemUtil;
 
 /**
@@ -68,21 +69,21 @@ public class AutenticacaoController
          }
          else
          {
-            viewRetorno.setViewName(URLRetorno.PAGINA_PRINCIPAL.getUrl());
+            viewRetorno.setViewName(PaginaRetorno.PAGINA_PRINCIPAL.getUrl());
          }
       }
       catch (DisabledException e)
       {
          mensagemUtil.adicionarMensagemErro(redirectAttributes, locale, ChaveMensagem.ERRO_LOGIN_SENHA_INVALIDOS.getChave(),
             new Object[]{});
-         viewRetorno.setViewName(URLRetorno.REDIRECT_URL_LOGIN.getUrl());
+         viewRetorno.setViewName(UrlRetorno.REDIRECT_URL_LOGIN);
          logger.error(e.getMessage(), e);
       }
       catch (BadCredentialsException e)
       {
          mensagemUtil.adicionarMensagemErro(redirectAttributes, locale, ChaveMensagem.ERRO_LOGIN_SENHA_INVALIDOS.getChave(),
             new Object[]{});
-         viewRetorno.setViewName(URLRetorno.REDIRECT_URL_LOGIN.getUrl());
+         viewRetorno.setViewName(UrlRetorno.REDIRECT_URL_LOGIN);
          logger.error(e.getMessage(), e);
       }
       catch (AuthenticationException e)
@@ -91,7 +92,7 @@ public class AutenticacaoController
          {
             mensagemUtil.adicionarMensagemErro(redirectAttributes, locale, ChaveMensagem.ERRO_LOGIN_SENHA_INVALIDOS.getChave(),
                new Object[]{});
-            viewRetorno.setViewName(URLRetorno.REDIRECT_URL_LOGIN.getUrl());
+            viewRetorno.setViewName(UrlRetorno.REDIRECT_URL_LOGIN);
          }
          logger.error(e.getMessage(), e);
       }

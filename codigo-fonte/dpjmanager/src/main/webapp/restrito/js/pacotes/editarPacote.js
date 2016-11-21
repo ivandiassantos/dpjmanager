@@ -1,9 +1,7 @@
 /**
- * Codificação Javascript para a inclusão de pacotes.
+ * Codificação Javascript para a edição de pacotes.
  */
-var campoHiddenSolicitacoes = [];
 $(document).ready(function() {
-	$("#tabelaSolicitacoes").hide();
 	$("#nomeSolicitacao").autocomplete({
 		minLength: 5,
 	    delay: 500,
@@ -19,7 +17,6 @@ $(document).ready(function() {
 	    },
 		select : function(event, ui) {
 			if (ui.item) {
-				$("#tabelaSolicitacoes").show();
 				atualizaCampoHiddenSolicitacoes(ui.item.value);
 				$('#tabelaSolicitacoes > tbody:last').append("<tr><td>"+ui.item.label+"</td><td><button class='btn btn-danger botaoRemoverSolicitacao' title='Remover' onclick='removerSolicitacao('"+ui.item.value+"');'><i class='fa fa-trash'></i></button></td></tr>");
 			}

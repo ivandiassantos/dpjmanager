@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.dpjmanager.enums.URLRetorno;
+import br.com.dpjmanager.enums.PaginaRetorno;
 
 
 @Controller
@@ -19,7 +19,7 @@ public class FaturamentoController {
 	public ModelAndView iniciarPesquisaFaturamento(){
 		
 		
-		return new ModelAndView(URLRetorno.PAGINA_PESQUISA_FATURAMENTO.getUrl());
+		return new ModelAndView(PaginaRetorno.PAGINA_PESQUISA_FATURAMENTO.getUrl());
 		
 		
 	}

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
-import br.com.dpjmanager.enums.URLRetorno;
+import br.com.dpjmanager.enums.PaginaRetorno;
 
 /**
  * Controladora responsável pelo redirecionamento para a página de login.
@@ -26,6 +26,6 @@ public class LoginController {
    @RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.POST})
    public ModelAndView login()
    {
-      return new ModelAndView(URLRetorno.PAGINA_AUTENTICACAO.getUrl());
+      return new ModelAndView(PaginaRetorno.PAGINA_AUTENTICACAO.getUrl());
 	}
 }

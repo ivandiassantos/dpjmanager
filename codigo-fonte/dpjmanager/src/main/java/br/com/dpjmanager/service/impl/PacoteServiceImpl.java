@@ -1,19 +1,30 @@
 
 package br.com.dpjmanager.service.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import br.com.dpjmanager.dao.PacoteDAO;
+import br.com.dpjmanager.dto.PacoteDTO;
+import br.com.dpjmanager.dto.SolicitacaoDTO;
+import br.com.dpjmanager.entidades.cq.Solicitacao;
 import br.com.dpjmanager.entidades.dpjmanager.Pacote;
 import br.com.dpjmanager.entidades.dpjmanager.PacoteSolicitacao;
+import br.com.dpjmanager.enums.ChaveMensagem;
 import br.com.dpjmanager.exception.BusinessException;
 import br.com.dpjmanager.service.PacoteService;
 import br.com.dpjmanager.service.PacoteSolicitacaoService;
 import br.com.dpjmanager.service.SolicitacaoService;
 
+/**
+ * Classe de serviço para funcionalidades relacionadas a pacote.
+ * 
+ * @author Novembro/2016: Ivan Dias <DD>
+ */
 @Service("pacoteService")
 public class PacoteServiceImpl implements PacoteService
 {
@@ -25,6 +36,11 @@ public class PacoteServiceImpl implements PacoteService
    @Autowired
    private SolicitacaoService solicitacaoService;
 
+   /**
+    * (Ver Javadoc da super classe)
+    * 
+    * @see br.com.dpjmanager.service.PacoteService#incluirPacote(br.com.dpjmanager.entidades.dpjmanager.Pacote, java.lang.String)
+    */
    @Transactional(propagation = Propagation.REQUIRES_NEW, transactionManager = "transactionManagerDpjManager")
    @Override
    public void incluirPacote(Pacote pacote, String solicitacoes) throws BusinessException
@@ -43,24 +59,81 @@ public class PacoteServiceImpl implements PacoteService
       }
    }
 
+   /**
+    * Verifica se existe um pacote cadastrado com o mesmo nome.
+    * 
+    * @param pacote
+    * @throws BusinessException
+    */
    private void validarNomePacote(Pacote pacote) throws BusinessException
    {
       Long qtdRegistros = pacoteDAO.validaNomePacote(pacote);
       if (qtdRegistros > 0)
       {
-         throw new BusinessException("nome_pacote_existente");
+         throw new BusinessException(ChaveMensagem.ERRO_NOME_PACOTE_EXISTENTE.getChave());
       }
    }
 
+   /**
+    * Obtém um array a partir das solicitações informadas.
+    * 
+    * @param solicitacoes
+    * @return numerosSolicitacoes
+    */
    private String[] obtemArraySolicitacoes(String solicitacoes)
    {
       String numerosSolicitacoes = solicitacoes.replaceAll("[^0-9a-zA-Z,]", "");
       return numerosSolicitacoes.split(",");
    }
 
+   /**
+    * Salva o relacionamento entre pacote e solicitação.
+    * 
+    * @param pacoteSolicitacao
+    */
    @Transactional(propagation = Propagation.NESTED, transactionManager = "transactionManagerDpjManager")
    private void salvaPacoteSolicitacao(PacoteSolicitacao pacoteSolicitacao)
    {
       pacoteSolicitacaoService.incluirPacoteSolicitacao(pacoteSolicitacao);
    }
+
+   /**
+    * (Ver Javadoc da super classe)
+    * 
+    * @see br.com.dpjmanager.service.PacoteService#listarPacotes()
+    */
+   @Override
+   public List<PacoteDTO> listarPacotes()
+   {
+      List<PacoteDTO> listaPacotes = new ArrayList<>();
+      List<Pacote> pacotes = pacoteDAO.listarPacotes();
+      for (Pacote pacote : pacotes)
+      {
+         PacoteDTO pacoteDTO = new PacoteDTO();
+         pacoteDTO.setCodPacote(pacote.getCodPacote());
+         pacoteDTO.setNomePacote(pacote.getNomePacote());
+         pacoteDTO.setDataInicio(pacote.getDataInicio());
+         pacoteDTO.setDataFinal(pacote.getDataFinal());
+         pacoteDTO.setSolicitacoes(new ArrayList<SolicitacaoDTO>());
+         for (PacoteSolicitacao pacoteSolicitacao : pacote.getPacotesSolicitacao())
+         {
+            Solicitacao solicitacao = solicitacaoService.obtemPorId(pacoteSolicitacao.getIdSolicitacao());
+            pacoteDTO.getSolicitacoes().add(new SolicitacaoDTO(solicitacao.getIdSolicitacao(), solicitacao.getDescricaoSolicitacao()));
+         }
+         listaPacotes.add(pacoteDTO);
+      }
+      return listaPacotes;
+   }
+
+   /**
+    * (Ver Javadoc da super classe)
+    * 
+    * @see br.com.dpjmanager.service.PacoteService#obtemPorId(java.lang.Long)
+    */
+   @Override
+   public Pacote obtemPorId(Long codPacote)
+   {
+      return pacoteDAO.obtemPorId(codPacote);
+   }
+
 }

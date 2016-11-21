@@ -11,11 +11,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import br.com.dpjmanager.constantes.UrlRetorno;
 import br.com.dpjmanager.entidades.dpjmanager.Pacote;
 import br.com.dpjmanager.enums.ChaveMensagem;
-import br.com.dpjmanager.enums.URLRetorno;
+import br.com.dpjmanager.enums.PaginaRetorno;
 import br.com.dpjmanager.exception.BusinessException;
 import br.com.dpjmanager.service.PacoteService;
+import br.com.dpjmanager.service.PacoteSolicitacaoService;
+import br.com.dpjmanager.service.SolicitacaoService;
 import br.com.dpjmanager.util.MensagemUtil;
 
 /**
@@ -25,15 +28,11 @@ import br.com.dpjmanager.util.MensagemUtil;
  */
 @Controller
 @Scope(value = WebApplicationContext.SCOPE_REQUEST)
-@RequestMapping(PacoteController.URL_PADRAO_PACOTES)
+@RequestMapping(UrlRetorno.URL_PADRAO_PACOTES)
 public class PacoteController
 {
 
    private static Logger logger = Logger.getLogger(PacoteController.class);
-
-   public static final String URL_PADRAO_PACOTES = "/restrito/pacotes";
-   private static final String URL_INICIAR_PESQUISA_PACOTES = "/iniciarPesquisaPacotes";
-   private static final String URL_CADASTRA_PACOTES = "/cadastrarPacote";
 
    @Autowired
    private MensagemUtil mensagemUtil;
@@ -41,15 +40,23 @@ public class PacoteController
    @Autowired
    private PacoteService pacoteService;
 
+   @Autowired
+   private PacoteSolicitacaoService pacoteSolicitacaoService;
+
+   @Autowired
+   private SolicitacaoService solicitacaoService;
+
    /**
     * Inicia e redireciona para a página de pesquisa de pacotes.
     * 
     * @return {@link ModelAndView}
     */
-   @RequestMapping(value = URL_INICIAR_PESQUISA_PACOTES, method = RequestMethod.GET)
+   @RequestMapping(value = UrlRetorno.URL_INICIAR_PESQUISA_PACOTES, method = RequestMethod.GET)
    public ModelAndView iniciarPesquisaPacotes()
    {
-      return new ModelAndView(URLRetorno.PAGINA_PESQUISA_PACOTES.getUrl());
+      ModelAndView retorno = new ModelAndView(PaginaRetorno.PAGINA_PESQUISA_PACOTES.getUrl());
+      retorno.addObject("listaPacotes", pacoteService.listarPacotes());
+      return retorno;
    }
 
    /**
@@ -58,10 +65,10 @@ public class PacoteController
     * @param {@link Pacote}
     * @return {@link ModelAndView}
     */
-   @RequestMapping(value = "/iniciarInclusaoPacote", method = RequestMethod.GET)
+   @RequestMapping(value = UrlRetorno.URL_INICIAR_INCLUSAO_PACOTE, method = RequestMethod.GET)
    public ModelAndView iniciarInclusaoPacote(Pacote pacote)
    {
-      return new ModelAndView(URLRetorno.INICIAR_INCLUSAO_PACOTE.getUrl());
+      return new ModelAndView(PaginaRetorno.INICIAR_INCLUSAO_PACOTE.getUrl());
    }
 
    /**
@@ -73,13 +80,13 @@ public class PacoteController
     * @param locale
     * @return {@link ModelAndView}
     */
-   @RequestMapping(value = URL_CADASTRA_PACOTES, method = RequestMethod.POST)
+   @RequestMapping(value = UrlRetorno.URL_CADASTRA_PACOTES, method = RequestMethod.POST)
    public ModelAndView cadastrarPacote(Pacote pacote, @RequestParam("solicitacoes") String solicitacoes,
       RedirectAttributes redirectAttributes, Locale locale)
    {
       try
       {
-         ModelAndView retorno = new ModelAndView(URLRetorno.REDIRECT_INICIAR_PESQUISA_PACOTES.getUrl());
+         ModelAndView retorno = new ModelAndView(UrlRetorno.REDIRECT_INICIAR_PESQUISA_PACOTES);
          pacoteService.incluirPacote(pacote, solicitacoes);
          mensagemUtil.adicionarMensagemSucesso(redirectAttributes, locale, ChaveMensagem.SUCESSO_INCLUSAO.getChave(), "Pacote");
          return retorno;
@@ -90,5 +97,20 @@ public class PacoteController
          logger.error(e.getCodigoErro(), e);
          return iniciarInclusaoPacote(pacote);
       }
+   }
+
+   /**
+    * Obtem o pacote pelo código para edição.
+    * 
+    * @param codPacote
+    * @return {@link ModelAndView}
+    */
+   @RequestMapping(value = UrlRetorno.URL_INICIAR_EDICAO_PACOTE, method = RequestMethod.GET)
+   public ModelAndView iniciarEdicaoPacote(@RequestParam("codPacote") Long codPacote)
+   {
+      ModelAndView retorno = new ModelAndView(PaginaRetorno.PAGINA_EDICAO_PACOTE.getUrl());
+      Pacote pacote = pacoteService.obtemPorId(codPacote);
+      retorno.addObject("pacote", pacote);
+      return retorno;
    }
 }

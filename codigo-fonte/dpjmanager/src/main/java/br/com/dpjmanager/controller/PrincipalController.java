@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
-import br.com.dpjmanager.enums.URLRetorno;
+import br.com.dpjmanager.enums.PaginaRetorno;
 
 /**
  * Classe para controle de fluxo para a página principal.
@@ -28,6 +28,6 @@ public class PrincipalController
    @RequestMapping(value = URL_RETORNO_PAGINA_PRINCIPAL, method = RequestMethod.GET)
    public ModelAndView principal()
    {
-      return new ModelAndView(URLRetorno.PAGINA_PRINCIPAL.getUrl());
+      return new ModelAndView(PaginaRetorno.PAGINA_PRINCIPAL.getUrl());
    }
 }

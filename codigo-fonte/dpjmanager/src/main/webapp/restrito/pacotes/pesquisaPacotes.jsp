@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib tagdir="/WEB-INF/tags/template" prefix="customTags"%>
-<customTags:templateFuncionalidades tituloFuncionalidade="Pacotes">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<customTags:templateFuncionalidades tituloFuncionalidade="Pesquisar Pacotes">
 	<form id="demo-form2" data-parsley-validate
 		class="form-horizontal form-label-left">
 		<div class="form-group">
@@ -54,11 +54,23 @@
 				<tbody>
 				   <c:forEach var="pacoteDTO" items="${listaPacotes}">
 			         <tr>
-			            <td></td>
-                     <td></td>
-                     <td></td>
-                     <td></td>
-                     <td></td>
+			            <td>${pacoteDTO.nomePacote}</td>
+                     <td>
+                        <fmt:formatDate value="${pacoteDTO.dataInicio}" pattern="dd/MM/yyyy"/> 
+                     </td>
+                     <td> 
+                        <fmt:formatDate value="${pacoteDTO.dataFinal}" pattern="dd/MM/yyyy"/>
+                     </td>
+                     <td>
+                        <c:forEach items="${pacoteDTO.solicitacoes}" var="solicitacaoDTO">
+                           ${solicitacaoDTO.idSolicitacao}&nbsp;-&nbsp;${solicitacaoDTO.descricaoSolicitacao}
+                           <br/>
+                        </c:forEach>
+                     </td>
+                     <td>
+                        <a href="<c:url value='/restrito/pacotes/iniciarEdicaoPacote?codPacote=${pacoteDTO.codPacote}'/>" class="btn btn-default" title="Editar"><i class="fa fa-edit"></i></a>
+                        <a href="#" class="btn btn-default" title="Excluir"><i class="fa fa-trash"></i></a>
+                     </td>
                   </tr>
 				   </c:forEach>
 				</tbody>

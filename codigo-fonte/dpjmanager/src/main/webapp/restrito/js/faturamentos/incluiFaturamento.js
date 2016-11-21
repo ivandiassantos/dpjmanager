@@ -1,9 +1,7 @@
 /**
- * Codificação Javascript para a inclusão de pacotes.
+ * Codificação Javascript para a inclusão de faturamento.
  */
-var campoHiddenSolicitacoes = [];
 $(document).ready(function() {
-	$("#tabelaSolicitacoes").hide();
 	$("#nomeSolicitacao").autocomplete({
 		minLength: 5,
 	    delay: 500,
@@ -34,16 +32,15 @@ $(document).ready(function() {
 	});
 });
 
-function atualizaCampoHiddenSolicitacoes(idSolicitacao){
-	campoHiddenSolicitacoes.push(idSolicitacao);
-	$('#solicitacoes').val(JSON.stringify(campoHiddenSolicitacoes));
+function obtemSolicitacaoPorPacote(){
+	$.getJSON(window.location.origin+"/dpjmanager/restrito/solicitacao/listaSolicitacoesPorNome?nomeSolicitacao="+$("#nomeSolicitacao").val()+"&solicitacoes="+$("#solicitacoes").val(), request, function(result) {
+        response($.map(result, function(item) {
+            return {
+                label: item.idSolicitacao + " - " + item.descricaoSolicitacao,
+                value: item.idSolicitacao
+            }
+        }));
+    });
 }
-
-function removerSolicitacao(idSolicitacao){
-	for(var i = campoHiddenSolicitacoes.length - 1; i >= 0; i--) {
-	    if(campoHiddenSolicitacoes[i] === idSolicitacao) {
-	       campoHiddenSolicitacoes.splice(i, 1);
-	    }
-	}
-}
+	
 

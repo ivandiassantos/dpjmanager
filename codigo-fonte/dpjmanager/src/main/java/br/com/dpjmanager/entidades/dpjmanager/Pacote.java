@@ -33,13 +33,16 @@ import lombok.Setter;
 @Entity
 @Table(name = "PACOTE")
 @NamedQueries({
-   @NamedQuery(name = "listarPacotes", query = "select distinct(p) from Pacote p join fetch p.pacotesSolicitacao "),
-   @NamedQuery(name = "validaNomePacote", query = "select count(p) from Pacote p where upper(p.nomePacote) = upper(:nomePacote)")
+   @NamedQuery(name = Pacote.NOME_QUERY_LISTAR_PACOTES, query = "select distinct(p) from Pacote p join fetch p.pacotesSolicitacao "),
+   @NamedQuery(name = Pacote.NOME_QUERY_VALIDA_NOME_PACOTE,
+            query = "select count(p) from Pacote p where upper(p.nomePacote) = upper(:nomePacote)")
 })
 public class Pacote implements Serializable
 {
 
-   /** @TODO Comentar atributo */
+   public static final String NOME_QUERY_LISTAR_PACOTES = "listarPacotes";
+   public static final String NOME_QUERY_VALIDA_NOME_PACOTE = "validaNomePacote";
+
    private static final long serialVersionUID = -6529390451947238448L;
    @Id
    @Getter

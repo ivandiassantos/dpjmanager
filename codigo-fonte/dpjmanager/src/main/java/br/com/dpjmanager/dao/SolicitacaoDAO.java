@@ -9,4 +9,6 @@ public interface SolicitacaoDAO
 
    List<Solicitacao> listaSolicitacoesPorNome(String nomeSolicitacao, List<String> listaIdsSolicitacoes);
 
+   Solicitacao obtemPorId(String idSolicitacao);
+
 }

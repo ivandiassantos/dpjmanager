@@ -16,15 +16,17 @@ import lombok.Setter;
 @Table(name = "SOLICITACAO")
 @NamedQueries({
    @NamedQuery(
-            name = "listaSolicitacaoPorNome",
+            name = Solicitacao.QUERY_LISTA_POR_NOME,
             query = "select s from Solicitacao s where upper(s.idSolicitacao) like :nomeSolicitacao or "
                + "upper(s.descricaoSolicitacao) like :nomeSolicitacao and s.idSolicitacao not in (:listaIdsSolicitacoes) "),
-   @NamedQuery(name = "buscaPorIdSolicitacao", query = "select s from Solicitacao s where s.idSolicitacao =:idSolicitacao ")
+   @NamedQuery(name = Solicitacao.QUERY_BUSCA_POR_ID, query = "select s from Solicitacao s where s.idSolicitacao =:idSolicitacao ")
 })
 @EqualsAndHashCode
 public class Solicitacao implements Serializable
 {
 
+   public static final String QUERY_LISTA_POR_NOME = "listaPorNome";
+   public static final String QUERY_BUSCA_POR_ID = "buscaPorId";
    private static final long serialVersionUID = 8730084671765678243L;
    @Id
    @Getter

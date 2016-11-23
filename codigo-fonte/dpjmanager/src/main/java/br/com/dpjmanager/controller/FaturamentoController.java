@@ -8,9 +8,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 
+<<<<<<< HEAD
 import br.com.dpjmanager.constantes.UrlRetorno;
 import br.com.dpjmanager.enums.PaginaRetorno;
 import br.com.dpjmanager.service.PacoteService;
+=======
+import br.com.dpjmanager.enums.PaginaRetorno;
+>>>>>>> branch 'master' of https://github.com/ivandiassantos/dpjmanager
 
 
 @Controller

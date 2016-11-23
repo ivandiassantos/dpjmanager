@@ -14,10 +14,13 @@ public class UrlRetorno
    public static final String URL_INICIAR_EDICAO_PACOTE = "/iniciarEdicaoPacote";
    public static final String REDIRECT_INICIAR_PESQUISA_PACOTES = "redirect:/restrito/pacotes/iniciarPesquisaPacotes";
    public static final String REDIRECT_URL_LOGIN = "redirect:/login";
+<<<<<<< HEAD
    public static final String URL_PADRAO_FATURAMENTO = "/restrito/faturamentos";
    public static final String URL_INICIAR_INCLUSAO_FATURAMENTO = "/iniciarInclusaoFaturamento";
    
    
    
    
+=======
+>>>>>>> branch 'master' of https://github.com/ivandiassantos/dpjmanager
 }

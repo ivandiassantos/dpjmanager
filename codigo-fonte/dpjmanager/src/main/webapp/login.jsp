@@ -51,10 +51,10 @@
 	                     </div>
 	                  </c:if>
                      <div>
-                        <input type="text" class="form-control" placeholder="Login" name="login" required/>
+                        <input type="email" class="form-control" placeholder="E-mail" name="login" required/>
                      </div>
 							<div>
-							   <input type="password" class="form-control" placeholder="Senha" name="senha" required/>
+							   <input type="password" class="form-control" placeholder="Senha" name="senha" required maxlength="10"/>
 							</div>
                      <div>
 								<input type="submit" class="btn btn-default" value="Entrar"/>

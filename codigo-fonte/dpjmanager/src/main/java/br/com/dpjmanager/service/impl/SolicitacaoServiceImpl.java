@@ -1,12 +1,14 @@
 
 package br.com.dpjmanager.service.impl;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import br.com.dpjmanager.dao.SolicitacaoDAO;
 import br.com.dpjmanager.entidades.cq.Solicitacao;
+import br.com.dpjmanager.entidades.dpjmanager.PacoteSolicitacao;
 import br.com.dpjmanager.service.PacoteSolicitacaoService;
 import br.com.dpjmanager.service.SolicitacaoService;
 
@@ -48,9 +50,20 @@ public class SolicitacaoServiceImpl implements SolicitacaoService
       return solicitacaoDAO.obtemPorId(idSolicitacao);
    }
 
+   /**
+    * (Ver Javadoc da super classe)
+    * 
+    * @see br.com.dpjmanager.service.SolicitacaoService#listaPorCodPacote(java.lang.Long)
+    */
    @Override
    public List<Solicitacao> listaPorCodPacote(Long codPacote)
    {
-      return null;
+      List<Solicitacao> solicitacoes = new ArrayList<>();
+      List<PacoteSolicitacao> listaPacoteSolicitacao = pacoteSolicitacaoService.obtemPorPacote(codPacote);
+      for (PacoteSolicitacao pacoteSolicitacao : listaPacoteSolicitacao)
+      {
+         solicitacoes.add(solicitacaoDAO.obtemPorId(pacoteSolicitacao.getIdSolicitacao()));
+      }
+      return solicitacoes;
    }
 }

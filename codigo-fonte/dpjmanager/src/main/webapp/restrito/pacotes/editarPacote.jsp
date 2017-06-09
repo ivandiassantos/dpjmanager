@@ -5,8 +5,8 @@
 <%@ taglib tagdir="/WEB-INF/tags/template" prefix="customTags"%>
 <customTags:templateFuncionalidades tituloFuncionalidade="Alterar Pacote">
    <form:form class="form-horizontal form-label-left" servletRelativeAction="/restrito/pacotes/editarPacote" method="post">
-      <input type="hidden" id="codPacote" value="${pacote.codPacote}" name="codPacote"/>
-      <input type="hidden" id="solicitacoes" name="solicitacoes"/>
+      <input type="hidden" id="codPacote" name="codPacote" value="${pacote.codPacote}"/>
+      <input type="hidden" id="solicitacoes" name="solicitacoes" value="${solicitacoes}"/>
       <div class="form-group">
          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nomePacote">Nome:</label>
          <div class="col-md-6 col-sm-6 col-xs-12">
@@ -39,6 +39,18 @@
              </tr>
          </thead>
          <tbody>
+            <c:forEach items="${listaSolicitacoes}" var="solicitacao">
+               <tr>
+                  <td>
+                     ${solicitacao.idSolicitacao} - ${solicitacao.descricaoSolicitacao}
+                  </td>
+                  <td>
+                     <button class="btn btn-danger botaoRemoverSolicitacao" title="Remover">
+                        <i class="fa fa-trash"></i>
+                     </button>
+                  </td>
+               </tr>
+            </c:forEach>
          </tbody>
       </table>
       <div class="ln_solid"></div>

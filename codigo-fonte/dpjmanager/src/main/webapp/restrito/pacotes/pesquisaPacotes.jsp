@@ -39,7 +39,7 @@
 			</div>
 		</div>
 		<div class="col-md-12 col-sm-12 col-xs-12">
-			<table id="tabelaPacotes"
+			<table id="resultadoPesquisa"
 				class="table table-striped table-bordered dt-responsive nowrap"
 				cellspacing="0" width="100%">
 				<thead>

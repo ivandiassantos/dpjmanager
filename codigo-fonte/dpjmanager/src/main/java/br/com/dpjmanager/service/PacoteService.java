@@ -37,4 +37,13 @@ public interface PacoteService
     * @return {@link Pacote}
     */
    Pacote obtemPorId(Long codPacote);
+
+   /**
+    * Realiza a edição do pacote.
+    * 
+    * @param pacote
+    * @param solicitacoes
+    * @throws BusinessException
+    */
+   void editarPacote(Pacote pacote, String solicitacoes) throws BusinessException;
 }

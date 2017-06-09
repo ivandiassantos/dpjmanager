@@ -31,13 +31,14 @@ import lombok.Setter;
 @Entity
 @Table(name = "PACOTE_SOLICITACAO")
 @NamedQueries({
-   @NamedQuery(name = "obtemPorSolicitacao", query = "select ps from PacoteSolicitacao ps where ps.pacote =:pacote")
+   @NamedQuery(name = PacoteSolicitacao.OBTEM_POR_COD_PACOTE,
+            query = "select ps from PacoteSolicitacao ps where ps.pacote.codPacote =:codPacote")
 })
 public class PacoteSolicitacao implements Serializable
 {
-
-   /** @TODO Comentar atributo */
    private static final long serialVersionUID = 1045628425375221765L;
+
+   public static final String OBTEM_POR_COD_PACOTE = "obtemPorCodPacote";
 
    @Id
    @Getter

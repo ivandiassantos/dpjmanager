@@ -25,7 +25,53 @@
   <link href="<c:url value='/resources/js/datatables/fixedHeader.bootstrap.min.css'/>" rel="stylesheet" type="text/css" />
   <link href="<c:url value='/resources/js/datatables/responsive.bootstrap.min.css'/>" rel="stylesheet" type="text/css" />
   <link href="<c:url value='/resources/js/datatables/scroller.bootstrap.min.css'/>" rel="stylesheet" type="text/css" />
-   <link href="<c:url value='/resources/css/jquery-ui.css'/>" rel="stylesheet" type="text/css" />
+  <link href="<c:url value='/resources/css/jquery-ui.css'/>" rel="stylesheet" type="text/css" />
+  <script src="<c:url value='/resources/js/bootstrap.min.js'/>"></script>
+  <!-- bootstrap progress js -->
+  <script src="<c:url value='/resources/js/jquery-ui.js'/>"></script>
+  <script src="<c:url value='/resources/js/progressbar/bootstrap-progressbar.min.js'/>"></script>
+  <script src="<c:url value='/resources/js/nicescroll/jquery.nicescroll.min.js'/>"></script>
+  <!-- icheck -->
+  <script src="<c:url value='/resources/js/icheck/icheck.min.js'/>"></script>
+  <!-- daterangepicker -->
+  <script type="text/javascript" src="<c:url value='/resources/js/moment/moment.min.js'/>"></script>
+  <script type="text/javascript" src="<c:url value='/resources/js/datepicker/daterangepicker.js'/>"></script>
+  <!-- chart js -->
+  <script src="<c:url value='/resources/js/chartjs/chart.min.js'/>"></script>
+  <script src="<c:url value='/resources/js/custom.js'/>"></script>
+  <!-- flot js -->
+  <!--[if lte IE 8]><script type="text/javascript" src="<c:url value='/resources/js/excanvas.min.js'/>"></script><![endif]-->
+  <script type="text/javascript" src="<c:url value='/resources/js/flot/jquery.flot.js'/>"></script>
+  <script type="text/javascript" src="<c:url value='/resources/js/flot/jquery.flot.pie.js'/>"></script>
+  <script type="text/javascript" src="<c:url value='/resources/js/flot/jquery.flot.orderBars.js'/>"></script>
+  <script type="text/javascript" src="<c:url value='/resources/js/flot/jquery.flot.time.min.js'/>"></script>
+  <script type="text/javascript" src="<c:url value='/resources/js/flot/date.js'/>"></script>
+  <script type="text/javascript" src="<c:url value='/resources/js/flot/jquery.flot.spline.js'/>"></script>
+  <script type="text/javascript" src="<c:url value='/resources/js/flot/jquery.flot.stack.js'/>"></script>
+  <script type="text/javascript" src="<c:url value='/resources/js/flot/curvedLines.js'/>"></script>
+  <script type="text/javascript" src="<c:url value='/resources/js/flot/jquery.flot.resize.js'/>"></script>
+  <script type="text/javascript" src="<c:url value='/resources/js/maps/jquery-jvectormap-2.0.3.min.js'/>"></script>
+  <script type="text/javascript" src="<c:url value='/resources/js/maps/gdp-data.js'/>"></script>
+  <script type="text/javascript" src="<c:url value='/resources/js/maps/jquery-jvectormap-world-mill-en.js'/>"></script>
+  <script type="text/javascript" src="<c:url value='/resources/js/maps/jquery-jvectormap-us-aea-en.js'/>"></script>
+  <script src="<c:url value='/resources/js/pace/pace.min.js'/>"></script>
+  <script src="<c:url value='/resources/js/skycons/skycons.min.js'/>"></script>
+  <script src="<c:url value='/resources/js/datatables/jquery.dataTables.min.js'/>"></script>
+  <script src="<c:url value='/resources/js/datatables/dataTables.bootstrap.js'/>"></script>
+  <script src="<c:url value='/resources/js/datatables/dataTables.buttons.min.js'/>"></script>
+  <script src="<c:url value='/resources/js/datatables/buttons.bootstrap.min.js'/>"></script>
+  <script src="<c:url value='/resources/js/datatables/jszip.min.js'/>"></script>
+  <script src="<c:url value='/resources/js/datatables/pdfmake.min.js'/>"></script>
+  <script src="<c:url value='/resources/js/datatables/vfs_fonts.js'/>"></script>
+  <script src="<c:url value='/resources/js/datatables/buttons.html5.min.js'/>"></script>
+  <script src="<c:url value='/resources/js/datatables/buttons.print.min.js'/>"></script>
+  <script src="<c:url value='/resources/js/datatables/dataTables.fixedHeader.min.js'/>"></script>
+  <script src="<c:url value='/resources/js/datatables/dataTables.keyTable.min.js'/>"></script>
+  <script src="<c:url value='/resources/js/datatables/dataTables.responsive.min.js'/>"></script>
+  <script src="<c:url value='/resources/js/datatables/responsive.bootstrap.min.js'/>"></script>
+  <script src="<c:url value='/resources/js/datatables/dataTables.scroller.min.js'/>"></script>
+  <script src="<c:url value='/resources/js/input_mask/jquery.mask.js'/>"></script>
+  <script src="<c:url value='/resources/js/funcoes.js'/>"></script>
   <!--[if lt IE 9]>
       <script src="<c:url value='/resources/assets/js/ie8-responsive-file-warning.js'/>"></script>
   <![endif]-->
@@ -107,49 +153,5 @@
     <div class="clearfix"></div>
     <div id="notif-group" class="tabbed_notifications"></div>
   </div>
-  <script src="<c:url value='/resources/js/bootstrap.min.js'/>"></script>
-  <!-- bootstrap progress js -->
-  <script src="<c:url value='/resources/js/jquery-ui.js'/>"></script>
-  <script src="<c:url value='/resources/js/progressbar/bootstrap-progressbar.min.js'/>"></script>
-  <script src="<c:url value='/resources/js/nicescroll/jquery.nicescroll.min.js'/>"></script>
-  <!-- icheck -->
-  <script src="<c:url value='/resources/js/icheck/icheck.min.js'/>"></script>
-  <!-- daterangepicker -->
-  <script type="text/javascript" src="<c:url value='/resources/js/moment/moment.min.js'/>"></script>
-  <script type="text/javascript" src="<c:url value='/resources/js/datepicker/daterangepicker.js'/>"></script>
-  <!-- chart js -->
-  <script src="<c:url value='/resources/js/chartjs/chart.min.js'/>"></script>
-  <script src="<c:url value='/resources/js/custom.js'/>"></script>
-  <!-- flot js -->
-  <!--[if lte IE 8]><script type="text/javascript" src="<c:url value='/resources/js/excanvas.min.js'/>"></script><![endif]-->
-  <script type="text/javascript" src="<c:url value='/resources/js/flot/jquery.flot.js'/>"></script>
-  <script type="text/javascript" src="<c:url value='/resources/js/flot/jquery.flot.pie.js'/>"></script>
-  <script type="text/javascript" src="<c:url value='/resources/js/flot/jquery.flot.orderBars.js'/>"></script>
-  <script type="text/javascript" src="<c:url value='/resources/js/flot/jquery.flot.time.min.js'/>"></script>
-  <script type="text/javascript" src="<c:url value='/resources/js/flot/date.js'/>"></script>
-  <script type="text/javascript" src="<c:url value='/resources/js/flot/jquery.flot.spline.js'/>"></script>
-  <script type="text/javascript" src="<c:url value='/resources/js/flot/jquery.flot.stack.js'/>"></script>
-  <script type="text/javascript" src="<c:url value='/resources/js/flot/curvedLines.js'/>"></script>
-  <script type="text/javascript" src="<c:url value='/resources/js/flot/jquery.flot.resize.js'/>"></script>
-  <script type="text/javascript" src="<c:url value='/resources/js/maps/jquery-jvectormap-2.0.3.min.js'/>"></script>
-  <script type="text/javascript" src="<c:url value='/resources/js/maps/gdp-data.js'/>"></script>
-  <script type="text/javascript" src="<c:url value='/resources/js/maps/jquery-jvectormap-world-mill-en.js'/>"></script>
-  <script type="text/javascript" src="<c:url value='/resources/js/maps/jquery-jvectormap-us-aea-en.js'/>"></script>
-  <script src="<c:url value='/resources/js/pace/pace.min.js'/>"></script>
-  <script src="<c:url value='/resources/js/skycons/skycons.min.js'/>"></script>
-  <script src="<c:url value='/resources/js/datatables/jquery.dataTables.min.js'/>"></script>
-  <script src="<c:url value='/resources/js/datatables/dataTables.bootstrap.js'/>"></script>
-  <script src="<c:url value='/resources/js/datatables/dataTables.buttons.min.js'/>"></script>
-  <script src="<c:url value='/resources/js/datatables/buttons.bootstrap.min.js'/>"></script>
-  <script src="<c:url value='/resources/js/datatables/jszip.min.js'/>"></script>
-  <script src="<c:url value='/resources/js/datatables/pdfmake.min.js'/>"></script>
-  <script src="<c:url value='/resources/js/datatables/vfs_fonts.js'/>"></script>
-  <script src="<c:url value='/resources/js/datatables/buttons.html5.min.js'/>"></script>
-  <script src="<c:url value='/resources/js/datatables/buttons.print.min.js'/>"></script>
-  <script src="<c:url value='/resources/js/datatables/dataTables.fixedHeader.min.js'/>"></script>
-  <script src="<c:url value='/resources/js/datatables/dataTables.keyTable.min.js'/>"></script>
-  <script src="<c:url value='/resources/js/datatables/dataTables.responsive.min.js'/>"></script>
-  <script src="<c:url value='/resources/js/datatables/responsive.bootstrap.min.js'/>"></script>
-  <script src="<c:url value='/resources/js/datatables/dataTables.scroller.min.js'/>"></script>
 </body>
 </html>

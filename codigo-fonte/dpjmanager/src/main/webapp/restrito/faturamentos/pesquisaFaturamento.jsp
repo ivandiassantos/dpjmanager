@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib tagdir="/WEB-INF/tags/template" prefix="customTags"%>
 <customTags:templateFuncionalidades tituloFuncionalidade="Faturamento">
 	<form id="demo-form2" data-parsley-validate
@@ -52,41 +53,51 @@
 		</div>
           
           <div class="col-md-12 col-sm-12 col-xs-12">
-			<table id="tabelaPacotes"
-				class="table table-striped table-bordered dt-responsive nowrap"
-				cellspacing="0" width="100%">
+			<table id="resultadoPesquisa" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
 				<thead>
 					<tr>
-                        <th>Pacote</th>
-                        <th>Solicitação</th>
-                        <th>Projeto</th>
-                        <th>Fase</th>
-                        <th>Nº OS</th>
-                        <th>Nº Nota Fiscal</th>
-                        <th>PF</th>
-                        <th>Data Cadastro</th>
-                        <th>Faturado R$</th>
-                        <th>Data Fat.</th>
-                        <th>Recebido R$</th>
-                        <th>PF/Horas</th>
-                        <th>Ações</th>
+	               <th>Pacote</th>
+	               <th>Solicitação</th>
+	               <th>Projeto</th>
+	               <th>Fase</th>
+	               <th>Nº OS</th>
+	               <th>Nº Nota Fiscal</th>
+	               <th>PF</th>
+	               <th>Data Cadastro</th>
+	               <th>Faturado R$</th>
+	               <th>Data Fat.</th>
+	               <th>Recebido R$</th>
+	               <th>PF/Horas</th>
+	               <th>Ações</th>
 					</tr>
 				</thead>
 				<tbody>
-				   <c:forEach var="pacoteDTO" items="${listaPacotes}">
+				   <c:forEach var="faturamento" items="${listaFaturamentos}">
 			         <tr>
-			            <td></td>
-                     <td></td>
-                     <td></td>
-                     <td></td>
-                     <td></td>
+			            <td>${faturamento.pacote.nomePacote}</td>
+	                  <td>${faturamento.numeroSolicitacao}</td>
+	                  <td>${faturamento.projeto.descricaoProjeto}</td>
+	                  <td></td>
+	                  <td>${faturamento.numeroOrdemServico}</td>
+	                  <td>${faturamento.numeroNotaFiscal}</td>
+	                  <td>${faturamento.pontoFuncaoEstimado}</td>
+	                  <td><fmt:formatDate value="${faturamento.dataCadastro}" pattern="dd/MM/yyyy"/></td>
+	                  <td><fmt:formatNumber value="${faturamento.valorFaturado}" pattern=",##0.00" type="currency"/> </td>
+	                  <td><fmt:formatDate value="${faturamento.dataRecebimento}" pattern="dd/MM/yyyy"/></td>
+	                  <td>
+	                     
+	                  </td>
+	                  <td>
+	                     
+	                  </td>
+	                  <td>
+	                     <a href="#" class="btn btn-default" title="Editar"><i class="fa fa-edit"></i></a>
+                        <a href="#" class="btn btn-default" title="Excluir"><i class="fa fa-trash"></i></a>
+                     </td>
                   </tr>
 				   </c:forEach>
 				</tbody>
 			</table>
 		</div>
 	</form>
-	<!-- <script src="<c:url value='/restrito/js/pacotes/pacotes.js'/>"></script> -->
-	
-	
 </customTags:templateFuncionalidades>

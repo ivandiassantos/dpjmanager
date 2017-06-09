@@ -2,6 +2,7 @@
 package br.com.dpjmanager.dao.impl;
 
 import java.util.List;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 import br.com.dpjmanager.dao.PacoteDAO;
@@ -49,7 +50,7 @@ public class PacoteDAOImpl extends DaoImpl implements PacoteDAO
    @Override
    public List<Pacote> listarPacotes()
    {
-      TypedQuery<Pacote> query = (TypedQuery<Pacote>) getEntityManagerDpjManager().createNamedQuery(Pacote.NOME_QUERY_LISTAR_PACOTES);
+      TypedQuery<Pacote> query = (TypedQuery<Pacote>) getEntityManagerDpjManager().createNamedQuery(Pacote.QUERY_LISTAR_PACOTES);
       return query.getResultList();
    }
 
@@ -62,7 +63,7 @@ public class PacoteDAOImpl extends DaoImpl implements PacoteDAO
    @Override
    public Long validaNomePacote(Pacote pacote)
    {
-      TypedQuery<Long> query = (TypedQuery<Long>) getEntityManagerDpjManager().createNamedQuery(Pacote.NOME_QUERY_VALIDA_NOME_PACOTE);
+      TypedQuery<Long> query = (TypedQuery<Long>) getEntityManagerDpjManager().createNamedQuery(Pacote.QUERY_VALIDA_NOME_PACOTE);
       query.setParameter("nomePacote", pacote.getNomePacote());
       return query.getSingleResult();
    }
@@ -76,5 +77,30 @@ public class PacoteDAOImpl extends DaoImpl implements PacoteDAO
    public Pacote obtemPorId(Long codPacote)
    {
       return getEntityManagerDpjManager().find(Pacote.class, codPacote);
+   }
+
+   /**
+    * (Ver Javadoc da super classe)
+    * 
+    * @see br.com.dpjmanager.dao.PacoteDAO#buscaQtdPacotesPorNomeCodigo(java.lang.String, java.lang.Long)
+    */
+   @Override
+   public Long buscaQtdPacotesPorNomeCodigo(String nomePacote, Long codPacote)
+   {
+      Query query = getEntityManagerDpjManager().createNamedQuery(Pacote.QUERY_BUSCA_QTD_PACOTE_POR_NOME_CODIGO);
+      query.setParameter("nomePacote", nomePacote);
+      query.setParameter("codPacote", codPacote);
+      return (Long) query.getSingleResult();
+   }
+
+   /**
+    * (Ver Javadoc da super classe)
+    * 
+    * @see br.com.dpjmanager.dao.PacoteDAO#editar(br.com.dpjmanager.entidades.dpjmanager.Pacote)
+    */
+   @Override
+   public void editar(Pacote pacote)
+   {
+      getEntityManagerDpjManager().merge(pacote);
    }
 }

@@ -1,6 +1,8 @@
 /**
  * Codificação Javascript para a edição de pacotes.
  */
+var campoHiddenSolicitacoes = [];
+adicionarItensArraySolicitacoes();
 $(document).ready(function() {
 	$("#nomeSolicitacao").autocomplete({
 		minLength: 5,
@@ -23,7 +25,7 @@ $(document).ready(function() {
 		}                
 	});
 	$(document).on('click','button.botaoRemoverSolicitacao', function() {
-		var solicitacao = $(this).closest('tr').children('td').text();
+		var solicitacao = $(this).closest('tr').children('td').text().trim();
 		var idSolicitacao = solicitacao.substring(0,11);
 		removerSolicitacao(idSolicitacao);
 	  	$(this).closest('tr').remove();
@@ -44,3 +46,10 @@ function removerSolicitacao(idSolicitacao){
 	}
 }
 
+function adicionarItensArraySolicitacoes(){
+	var solicitacoesAtuais = $('#solicitacoes').val().split(",");
+	for(var i = 0; i < solicitacoesAtuais.length; i++ ){
+		campoHiddenSolicitacoes.push(solicitacoesAtuais[i].replace(/[^0-9a-zA-Z]/g,""));
+	}
+	
+}

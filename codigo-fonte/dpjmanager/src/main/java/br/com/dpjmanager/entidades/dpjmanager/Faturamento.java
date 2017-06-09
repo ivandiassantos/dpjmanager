@@ -11,19 +11,32 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.format.annotation.NumberFormat.Style;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Classe de mapeamento da entidade Faturamento.
+ * 
+ * @author Dezembro/2016: Antônio Jousivan <DD>
+ */
 @Entity
 @Table(name = "FATURAMENTO")
+@NamedQuery(name = Faturamento.QUERY_LISTAR_FATURAMENTOS,
+         query = "select f from Faturamento f join fetch f.pacote join fetch f.projeto ")
 public class Faturamento implements Serializable
 {
-   /** @TODO Comentar atributo */
    private static final long serialVersionUID = -9104918607178065012L;
+   
+   public static final String QUERY_LISTAR_FATURAMENTOS = "listarFaturamentos";
 
    @Id
    @Getter
@@ -48,60 +61,64 @@ public class Faturamento implements Serializable
    @Getter
    @Setter
    @Column(name = "PONTO_FUNCAO_FATURADO")
-   private Long pontoFuncaoFaturado;
+   @NumberFormat(style = Style.CURRENCY, pattern = ",##0.00")
+   private BigDecimal pontoFuncaoFaturado;
 
    @Getter
    @Setter
    @Column(name = "DATA_CADASTRO")
    @Temporal(TemporalType.DATE)
+   @DateTimeFormat(iso = ISO.DATE)
    private Date dataCadastro;
 
    @Getter
    @Setter
    @Column(name = "VALOR_FATURADO")
+   @NumberFormat(style = Style.CURRENCY, pattern = ",##0.00")
    private BigDecimal valorFaturado;
 
    @Getter
    @Setter
    @Column(name = "DATA_RECEBIMENTO")
    @Temporal(TemporalType.DATE)
+   @DateTimeFormat(iso = ISO.DATE)
    private Date dataRecebimento;
 
    @Getter
    @Setter
    @Column(name = "VALOR_RECEBIMENTO")
+   @NumberFormat(style = Style.CURRENCY, pattern = ",##0.00")
    private BigDecimal valorRecebimento;
 
    @Getter
    @Setter
    @Column(name = "NUM_SOLICITACAO")
-   private String numSolicitacao;
+   private String numeroSolicitacao;
    
    @Getter
    @Setter
    @Column(name = "NUM_ORDEM_SERVICO")
-   private String numOrdemServico;
+   private String numeroOrdemServico;
    
    @Getter
    @Setter
    @Column(name = "NUM_NOTA_FISCAL")
-   private String numNotaFiscal;
+   private String numeroNotaFiscal;
    
    @Getter
    @Setter
    @Column(name = "PONTO_FUNCAO_ESTIMADO")
-   private String pontoFuncaoEstimado;
+   @NumberFormat(style = Style.CURRENCY, pattern = ",##0.00")
+   private BigDecimal pontoFuncaoEstimado;
    
    @Getter
    @Setter
    @Column(name = "PONTO_FUNCAO_DETALHADO")
-   private String pontoFuncaoDetalhado;
+   @NumberFormat(style = Style.CURRENCY, pattern = ",##0.00")
+   private BigDecimal pontoFuncaoDetalhado;
    
    @Getter
    @Setter
    @Column(name = "QTD_HORAS_REALIZADAS")
    private String qtdHorasRealizadas;
-   
-   
-
 }

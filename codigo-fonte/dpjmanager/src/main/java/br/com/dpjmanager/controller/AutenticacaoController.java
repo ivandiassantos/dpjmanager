@@ -65,7 +65,7 @@ public class AutenticacaoController
          Usuario usuario = (Usuario) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
          if (usuario.isPrimeiroAcesso())
          {
-            // viewRetorno.setViewName(URLRetorno.REDIRECT_PAGINA_INICIAR_ALTERACAO_SENHA_PRIMEIRO_ACESSO.getUrl());
+            viewRetorno.setViewName(UrlRetorno.REDIRECT_PAGINA_INICIAR_ALTERACAO_SENHA_PRIMEIRO_ACESSO);
          }
          else
          {

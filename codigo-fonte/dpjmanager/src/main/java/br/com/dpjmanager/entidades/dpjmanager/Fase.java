@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import lombok.Getter;
@@ -18,11 +19,11 @@ import lombok.Setter;
  */
 @Entity
 @Table(name = "FASE")
+@NamedQuery(name = Fase.QUERY_LISTAR_FASES, query = "select f from Fase f order by descricaoFase asc")
 public class Fase implements Serializable
 {
-
-   /** @TODO Comentar atributo */
    private static final long serialVersionUID = 6816011832250542170L;
+   public static final String QUERY_LISTAR_FASES = "listarFases";
    @Id
    @Getter
    @Setter

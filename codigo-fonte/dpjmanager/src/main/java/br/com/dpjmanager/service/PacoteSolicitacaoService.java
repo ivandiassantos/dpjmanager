@@ -2,7 +2,6 @@
 package br.com.dpjmanager.service;
 
 import java.util.List;
-import br.com.dpjmanager.entidades.dpjmanager.Pacote;
 import br.com.dpjmanager.entidades.dpjmanager.PacoteSolicitacao;
 
 /**
@@ -21,12 +20,18 @@ public interface PacoteSolicitacaoService
    void incluirPacoteSolicitacao(PacoteSolicitacao pacoteSolicitacao);
 
    /**
-    * Obtém o relacionamento por pacote.
+    * Obtém os relacionamentos entre pacote e solicitação.
     * 
-    * @param pacote
+    * @param codPacote
     * @return {@link List<PacoteSolicitacao>}
     */
-   List<PacoteSolicitacao> obtemPorPacote(Pacote pacote);
+   List<PacoteSolicitacao> obtemPorPacote(Long codPacote);
    
-   
+   /**
+    * Remove os relacionamentos pelo código do pacote.
+    * 
+    * @param codPacote
+    */
+   void removerPorCodigoPacote(Long codPacote);
+
 }

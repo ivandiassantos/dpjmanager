@@ -1,5 +1,8 @@
+
 package br.com.dpjmanager.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,7 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.dpjmanager.constantes.UrlRetorno;
+import br.com.dpjmanager.entidades.cq.Solicitacao;
 import br.com.dpjmanager.entidades.dpjmanager.Pacote;
 import br.com.dpjmanager.enums.ChaveMensagem;
 import br.com.dpjmanager.enums.PaginaRetorno;
@@ -62,7 +66,7 @@ public class PacoteController
    /**
     * Redireciona para a página de inclusão de pacotes.
     * 
-    * @param {@link Pacote}
+    * @param pacote
     * @return {@link ModelAndView}
     */
    @RequestMapping(value = UrlRetorno.URL_INICIAR_INCLUSAO_PACOTE, method = RequestMethod.GET)
@@ -110,7 +114,41 @@ public class PacoteController
    {
       ModelAndView retorno = new ModelAndView(PaginaRetorno.PAGINA_EDICAO_PACOTE.getUrl());
       Pacote pacote = pacoteService.obtemPorId(codPacote);
+      List<Solicitacao> listaSolicitacoes = solicitacaoService.listaPorCodPacote(codPacote);
+      List<String> listaIdsSolicitacoes = new ArrayList<>();
+      listaSolicitacoes.forEach(solicitacao -> listaIdsSolicitacoes.add(solicitacao.getIdSolicitacao()));
+      retorno.addObject("solicitacoes", listaIdsSolicitacoes);
       retorno.addObject("pacote", pacote);
+      retorno.addObject("listaSolicitacoes", listaSolicitacoes);
       return retorno;
    }
+
+   /**
+    * Realiza a edição do pacote cadastrado.
+    * 
+    * @param pacote
+    * @param solicitacoes
+    * @param redirectAttributes
+    * @param locale
+    * @return {@link ModelAndView}
+    */
+   @RequestMapping(value = UrlRetorno.URL_EDITA_PACOTE, method = RequestMethod.POST)
+   public ModelAndView editarPacote(Pacote pacote, @RequestParam("solicitacoes") String solicitacoes,
+      RedirectAttributes redirectAttributes, Locale locale)
+   {
+      ModelAndView retorno = new ModelAndView();
+      try
+      {
+         pacoteService.editarPacote(pacote, solicitacoes);
+         retorno.setViewName(UrlRetorno.REDIRECT_INICIAR_PESQUISA_PACOTES);
+      }
+      catch (BusinessException e)
+      {
+         retorno.setViewName(PaginaRetorno.REDIRECT_PAGINA_EDICAO_PACOTE.getUrl());
+         mensagemUtil.adicionarMensagemErro(redirectAttributes, locale, e.getCodigoErro(), new Object[]{""});
+         logger.error(e.getCodigoErro(), e);
+      }
+      return retorno;
+   }
+
 }

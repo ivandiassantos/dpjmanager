@@ -20,14 +20,14 @@ public enum PaginaRetorno
       PAGINA_PESQUISA_FATURAMENTO("/restrito/faturamentos/pesquisaFaturamento"),
       PAGINA_PESQUISA_PACOTES("/restrito/pacotes/pesquisaPacotes"),
       INICIAR_INCLUSAO_PACOTE("/restrito/pacotes/incluirPacote"),
-<<<<<<< HEAD
       PAGINA_EDICAO_PACOTE("/restrito/pacotes/editarPacote"),
-      INICIAR_INCLUSAO_FATURAMENTO("/restrito/faturamentos/incluirFaturamento");
-   
-=======
-      PAGINA_EDICAO_PACOTE("/restrito/pacotes/editarPacote");
+      INICIAR_INCLUSAO_FATURAMENTO("/restrito/faturamentos/incluirFaturamento"),
+      PAGINA_ALTERACAO_SENHA_PRIMEIRO_ACESSO("restrito/usuarios/alterarSenhaPrimeiroAcesso"),
+      REDIRECT_URL_LOGIN("redirect:/login"),
+      REDIRECT_PAGINA_PESQUISA_FATURAMENTO("redirect:/restrito/faturamentos/pesquisaFaturamento"),
+      REDIRECT_PAGINA_EDICAO_PACOTE("redirect:/restrito/pacotes/editarPacote"),
+      PAGINA_DASHBOARD_UNIDADE("/restrito/dashboards/unidades/dashboardUnidade");
 
->>>>>>> branch 'master' of https://github.com/ivandiassantos/dpjmanager
    @Getter
    private String url;
 

@@ -136,4 +136,44 @@ public class PacoteServiceImpl implements PacoteService
       return pacoteDAO.obtemPorId(codPacote);
    }
 
+   /**
+    * (Ver Javadoc da super classe)
+    * 
+    * @throws BusinessException
+    * @see br.com.dpjmanager.service.PacoteService#editarPacote(br.com.dpjmanager.entidades.dpjmanager.Pacote, java.lang.String)
+    */
+   @Transactional(propagation = Propagation.REQUIRED, transactionManager = "transactionManagerDpjManager")
+   @Override
+   public void editarPacote(Pacote pacote, String solicitacoes) throws BusinessException
+   {
+      validaNomePacote(pacote.getNomePacote(), pacote.getCodPacote());
+      pacoteDAO.editar(pacote);
+      pacoteSolicitacaoService.removerPorCodigoPacote(pacote.getCodPacote());
+      String[] arraySolicitacoes = obtemArraySolicitacoes(solicitacoes);
+      for (String idSolicitacao : arraySolicitacoes)
+      {
+         PacoteSolicitacao pacoteSolicitacao = new PacoteSolicitacao();
+         pacoteSolicitacao.setDataInclusao(new Date());
+         pacoteSolicitacao.setIdSolicitacao(idSolicitacao);
+         pacoteSolicitacao.setPacote(pacote);
+         salvaPacoteSolicitacao(pacoteSolicitacao);
+      }
+   }
+
+   /**
+    * Verifica se já existe um pacote cadastrado com o mesmo nome.
+    * 
+    * @param nomePacote
+    * @param codPacote
+    * @throws BusinessException
+    */
+   private void validaNomePacote(String nomePacote, Long codPacote) throws BusinessException
+   {
+      Long qtdPacotesMesmoNomeCodigo = pacoteDAO.buscaQtdPacotesPorNomeCodigo(nomePacote, codPacote);
+      if (qtdPacotesMesmoNomeCodigo > 0)
+      {
+         throw new BusinessException(ChaveMensagem.ERRO_NOME_PACOTE_EXISTENTE.getChave());
+      }
+   }
+
 }

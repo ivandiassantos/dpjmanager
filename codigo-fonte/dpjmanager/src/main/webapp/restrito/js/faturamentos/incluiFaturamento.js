@@ -2,45 +2,47 @@
  * Codificação Javascript para a inclusão de faturamento.
  */
 $(document).ready(function() {
-	$("#nomeSolicitacao").autocomplete({
-		minLength: 5,
-	    delay: 500,
-	    source: function (request, response) {
-	        $.getJSON(window.location.origin+"/dpjmanager/restrito/solicitacao/listaSolicitacoesPorNome?nomeSolicitacao="+$("#nomeSolicitacao").val()+"&solicitacoes="+$("#solicitacoes").val(), request, function(result) {
-	            response($.map(result, function(item) {
-	                return {
-	                    label: item.idSolicitacao + " - " + item.descricaoSolicitacao,
-	                    value: item.idSolicitacao
-	                }
-	            }));
-	        });
-	    },
-		select : function(event, ui) {
-			if (ui.item) {
-				$("#tabelaSolicitacoes").show();
-				atualizaCampoHiddenSolicitacoes(ui.item.value);
-				$('#tabelaSolicitacoes > tbody:last').append("<tr><td>"+ui.item.label+"</td><td><button class='btn btn-danger botaoRemoverSolicitacao' title='Remover' onclick='removerSolicitacao('"+ui.item.value+"');'><i class='fa fa-trash'></i></button></td></tr>");
-			}
-		}                
+	$("#pontoFuncaoFaturado").mask("#.##0,00", {reverse: true});
+	$("#valorFaturado").mask("#.##0,00", {reverse: true});
+	$("#valorRecebido").mask("#.##0,00", {reverse: true});
+	$("#pontoFuncaoEstimado").mask("#.##0,00", {reverse: true});
+	$("#pontoFuncaoDetalhado").mask("#.##0,00", {reverse: true});
+	$("#totalHoras").mask("99:99", {reverse: true});
+	$('input[name=tipoFaturamento]').change(function(){
+	    if($('input[name=tipoFaturamento]:checked').val() === 'horas'){
+	    	$(".campoHoras").show();
+	    	$(".campoPontoFuncao").hide();
+	    }else{
+	    	$(".campoHoras").hide();
+	    	$(".campoPontoFuncao").show();
+	    }
 	});
-	$(document).on('click','button.botaoRemoverSolicitacao', function() {
-		var solicitacao = $(this).closest('tr').children('td').text();
-		var idSolicitacao = solicitacao.substring(0,11);
-		removerSolicitacao(idSolicitacao);
-	  	$(this).closest('tr').remove();
-	  	return false;
+	$(".campoHoras").hide();
+	$("#pacote").change(function() {
+		$.getJSON(window.location.origin+"/dpjmanager/restrito/solicitacoes/listaSolicitacoesPorCodPacote?codPacote="+$("#pacote").val(), 
+			function(result) {
+				$("#solicitacao").empty();
+				$("#solicitacao").append($("<option>Selecione</option>").val(""));
+				$.each(result, function(i, item){
+					$("#solicitacao").append($("<option></option>").val(item.idSolicitacao).html(item.descricaoSolicitacao));
+				});
+        	}
+		);
+	});
+	
+	$("#solicitacao").change(function() {
+		obtemProjetosPorSolicitacao();
 	});
 });
 
-function obtemSolicitacaoPorPacote(){
-	$.getJSON(window.location.origin+"/dpjmanager/restrito/solicitacao/listaSolicitacoesPorNome?nomeSolicitacao="+$("#nomeSolicitacao").val()+"&solicitacoes="+$("#solicitacoes").val(), request, function(result) {
-        response($.map(result, function(item) {
-            return {
-                label: item.idSolicitacao + " - " + item.descricaoSolicitacao,
-                value: item.idSolicitacao
-            }
-        }));
-    });
+function obtemProjetosPorSolicitacao(){
+	$.getJSON(window.location.origin+"/dpjmanager/restrito/projetos/obtemProjetosPorSolicitacao?numeroSolicitacao="+$("#solicitacao").val(), 
+		function(result) {
+			$("#projeto").empty();
+			$("#projeto").append($("<option>Selecione</option>").val(""));
+			$.each(result, function(i, item){
+				$("#projeto").append($("<option></option>").val(item.codProjeto).html(item.descricaoProjeto));
+			});
+		}
+	);
 }
-	
-

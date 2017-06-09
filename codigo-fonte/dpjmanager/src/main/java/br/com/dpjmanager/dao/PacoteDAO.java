@@ -49,4 +49,19 @@ public interface PacoteDAO
     * @return {@link Pacote}
     */
    Pacote obtemPorId(Long codPacote);
+
+   /**
+    * Busca a quantidade de pacotes cadastrados por nome e código.
+    * 
+    * @param nomePacote
+    * @param codPacote
+    * @return {@link Long}
+    */
+   Long buscaQtdPacotesPorNomeCodigo(String nomePacote, Long codPacote);
+
+   /**
+    * @TODO Comentar Método
+    * @param pacote
+    */
+   void editar(Pacote pacote);
 }

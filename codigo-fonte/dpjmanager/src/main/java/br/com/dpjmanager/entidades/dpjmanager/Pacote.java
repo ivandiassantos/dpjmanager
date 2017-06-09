@@ -33,15 +33,18 @@ import lombok.Setter;
 @Entity
 @Table(name = "PACOTE")
 @NamedQueries({
-   @NamedQuery(name = Pacote.NOME_QUERY_LISTAR_PACOTES, query = "select distinct(p) from Pacote p join fetch p.pacotesSolicitacao "),
-   @NamedQuery(name = Pacote.NOME_QUERY_VALIDA_NOME_PACOTE,
-            query = "select count(p) from Pacote p where upper(p.nomePacote) = upper(:nomePacote)")
+   @NamedQuery(name = Pacote.QUERY_LISTAR_PACOTES, query = "select distinct(p) from Pacote p join fetch p.pacotesSolicitacao "),
+   @NamedQuery(name = Pacote.QUERY_VALIDA_NOME_PACOTE,
+            query = "select count(p) from Pacote p where upper(p.nomePacote) = upper(:nomePacote)"),
+   @NamedQuery(name = Pacote.QUERY_BUSCA_QTD_PACOTE_POR_NOME_CODIGO,
+            query = "select p from Pacote p where upper(p.nomePacote) = upper (:nomePacote) and p.codPacote =:codPacote")
 })
 public class Pacote implements Serializable
 {
 
-   public static final String NOME_QUERY_LISTAR_PACOTES = "listarPacotes";
-   public static final String NOME_QUERY_VALIDA_NOME_PACOTE = "validaNomePacote";
+   public static final String QUERY_LISTAR_PACOTES = "listarPacotes";
+   public static final String QUERY_VALIDA_NOME_PACOTE = "validaNomePacote";
+   public static final String QUERY_BUSCA_QTD_PACOTE_POR_NOME_CODIGO = "buscaQtdPacotePorNomeCodigo";
 
    private static final long serialVersionUID = -6529390451947238448L;
    @Id

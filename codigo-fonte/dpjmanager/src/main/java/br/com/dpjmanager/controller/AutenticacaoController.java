@@ -1,3 +1,4 @@
+
 package br.com.dpjmanager.controller;
 
 import java.util.Locale;
@@ -22,7 +23,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.dpjmanager.constantes.UrlRetorno;
 import br.com.dpjmanager.entidades.dpjmanager.Usuario;
 import br.com.dpjmanager.enums.ChaveMensagem;
-import br.com.dpjmanager.enums.PaginaRetorno;
 import br.com.dpjmanager.util.MensagemUtil;
 
 /**
@@ -37,7 +37,7 @@ public class AutenticacaoController
 
    @Autowired
    private AuthenticationManager authenticationManager;
-   
+
    @Autowired
    private MensagemUtil mensagemUtil;
 
@@ -65,24 +65,24 @@ public class AutenticacaoController
          Usuario usuario = (Usuario) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
          if (usuario.isPrimeiroAcesso())
          {
-            viewRetorno.setViewName(UrlRetorno.REDIRECT_PAGINA_INICIAR_ALTERACAO_SENHA_PRIMEIRO_ACESSO);
+            mensagemUtil.adicionarMensagemInformativa(redirectAttributes, locale,
+               ChaveMensagem.INFORMACAO_PRIMEIRO_ACESSO_USUARIO.getChave());
+            viewRetorno.setViewName(UrlRetorno.REDIRECT_PAGINA_ALTERACAO_SENHA_PRIMEIRO_ACESSO);
          }
          else
          {
-            viewRetorno.setViewName(PaginaRetorno.PAGINA_PRINCIPAL.getUrl());
+            viewRetorno.setViewName(UrlRetorno.REDIRECT_URL_PRINCIPAL);
          }
       }
       catch (DisabledException e)
       {
-         mensagemUtil.adicionarMensagemErro(redirectAttributes, locale, ChaveMensagem.ERRO_LOGIN_SENHA_INVALIDOS.getChave(),
-            new Object[]{});
+         mensagemUtil.adicionarMensagemErro(redirectAttributes, locale, ChaveMensagem.ERRO_LOGIN_SENHA_INVALIDOS.getChave());
          viewRetorno.setViewName(UrlRetorno.REDIRECT_URL_LOGIN);
          logger.error(e.getMessage(), e);
       }
       catch (BadCredentialsException e)
       {
-         mensagemUtil.adicionarMensagemErro(redirectAttributes, locale, ChaveMensagem.ERRO_LOGIN_SENHA_INVALIDOS.getChave(),
-            new Object[]{});
+         mensagemUtil.adicionarMensagemErro(redirectAttributes, locale, ChaveMensagem.ERRO_LOGIN_SENHA_INVALIDOS.getChave());
          viewRetorno.setViewName(UrlRetorno.REDIRECT_URL_LOGIN);
          logger.error(e.getMessage(), e);
       }
@@ -90,8 +90,7 @@ public class AutenticacaoController
       {
          if (e.getCause() instanceof NoResultException)
          {
-            mensagemUtil.adicionarMensagemErro(redirectAttributes, locale, ChaveMensagem.ERRO_LOGIN_SENHA_INVALIDOS.getChave(),
-               new Object[]{});
+            mensagemUtil.adicionarMensagemErro(redirectAttributes, locale, ChaveMensagem.ERRO_LOGIN_SENHA_INVALIDOS.getChave());
             viewRetorno.setViewName(UrlRetorno.REDIRECT_URL_LOGIN);
          }
          logger.error(e.getMessage(), e);
@@ -99,5 +98,4 @@ public class AutenticacaoController
 
       return viewRetorno;
    }
-
 }

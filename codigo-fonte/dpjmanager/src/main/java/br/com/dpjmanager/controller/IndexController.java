@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
-import br.com.dpjmanager.enums.PaginaRetorno;
+import br.com.dpjmanager.constantes.UrlRetorno;
 
 /**
  * Controlador para a url raiz do sistema.
@@ -27,6 +27,6 @@ public class IndexController
    @RequestMapping(method = RequestMethod.GET, value = "/")
    public ModelAndView index()
    {
-      return new ModelAndView(PaginaRetorno.PAGINA_AUTENTICACAO.getUrl());
+      return new ModelAndView(UrlRetorno.REDIRECT_URL_LOGIN);
    }
 }

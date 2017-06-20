@@ -34,6 +34,18 @@ public class MensagemUtil
    }
 
    /**
+    * Adiciona uma mensagem de erro.
+    * 
+    * @param redirectAttributes
+    * @param locale
+    * @param chaveMensagem
+    */
+   public void adicionarMensagemErro(RedirectAttributes redirectAttributes, Locale locale, String chaveMensagem)
+   {
+      adicionarMensagem(redirectAttributes, locale, chaveMensagem, TipoMensagem.MENSAGEM_ERRO, new Object[]{});
+   }
+
+   /**
     * Adiciona uma mensagem de alerta.
     * 
     * @param redirectAttributes
@@ -47,6 +59,18 @@ public class MensagemUtil
    }
 
    /**
+    * Adiciona uma mensagem de alerta.
+    * 
+    * @param redirectAttributes
+    * @param locale
+    * @param chaveMensagem
+    */
+   public void adicionarMensagemAlerta(RedirectAttributes redirectAttributes, Locale locale, String chaveMensagem)
+   {
+      adicionarMensagem(redirectAttributes, locale, chaveMensagem, TipoMensagem.MENSAGEM_ALERTA, new Object[]{});
+   }
+
+   /**
     * Adiciona uma mensagem de sucesso.
     * 
     * @param redirectAttributes
@@ -57,6 +81,44 @@ public class MensagemUtil
    public void adicionarMensagemSucesso(RedirectAttributes redirectAttributes, Locale locale, String chaveMensagem, Object... parametros)
    {
       adicionarMensagem(redirectAttributes, locale, chaveMensagem, TipoMensagem.MENSAGEM_SUCESSO, parametros);
+   }
+
+   /**
+    * Adiciona uma mensagem de sucesso.
+    * 
+    * @param redirectAttributes
+    * @param locale
+    * @param chaveMensagem
+    */
+   public void adicionarMensagemSucesso(RedirectAttributes redirectAttributes, Locale locale, String chaveMensagem)
+   {
+      adicionarMensagem(redirectAttributes, locale, chaveMensagem, TipoMensagem.MENSAGEM_SUCESSO, new Object[]{});
+   }
+
+   /**
+    * Adiciona uma mensagem de sucesso.
+    * 
+    * @param redirectAttributes
+    * @param locale
+    * @param chaveMensagem
+    * @param parametros
+    */
+   public void adicionarMensagemInformativa(RedirectAttributes redirectAttributes, Locale locale, String chaveMensagem,
+      Object... parametros)
+   {
+      adicionarMensagem(redirectAttributes, locale, chaveMensagem, TipoMensagem.MENSAGEM_INFORMATIVA, parametros);
+   }
+
+   /**
+    * Adiciona uma mensagem de sucesso.
+    * 
+    * @param redirectAttributes
+    * @param locale
+    * @param chaveMensagem
+    */
+   public void adicionarMensagemInformativa(RedirectAttributes redirectAttributes, Locale locale, String chaveMensagem)
+   {
+      adicionarMensagem(redirectAttributes, locale, chaveMensagem, TipoMensagem.MENSAGEM_INFORMATIVA, new Object[]{});
    }
 
    /**

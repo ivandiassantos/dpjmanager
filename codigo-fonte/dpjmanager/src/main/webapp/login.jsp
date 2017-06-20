@@ -2,77 +2,62 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
-<html>
+<html>    
    <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <!-- Meta, title, CSS, favicons, etc. -->
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>DPJ Manager | Login</title>
-      <!-- Bootstrap core CSS -->
-      <link href="<c:url value='/resources/css/bootstrap.min.css'/>" rel="stylesheet">
-      <link href="<c:url value='/resources/fonts/css/font-awesome.min.css'/>" rel="stylesheet">
-		<link href="<c:url value='/resources/css/animate.min.css'/>" rel="stylesheet">
-		<!-- Custom styling plus plugins -->
-		<link href="<c:url value='/resources/css/custom.css'/>" rel="stylesheet">
-		<link href="<c:url value='/resources/css/icheck/flat/green.css'/>" rel="stylesheet">
-		<script src="<c:url value='/resources/js/jquery.min.js'/>"></script>
-      <!--[if lt IE 9]>
-         <script src="<c:url value='/resources/assets/js/ie8-responsive-file-warning.js'/>"></script>
-      <![endif]-->
-      <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-      <!--[if lt IE 9]>
-         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-      <![endif]-->
+      <title>DPJ Manager</title>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" href="<c:url value='/resources/css/bootstrap.min.css'/>" />
+      <link rel="stylesheet" href="<c:url value='/resources/css/bootstrap-responsive.min.css'/>" />
+      <link rel="stylesheet" href="<c:url value='/resources/css/matrix-login.css'/>" />
+      <link href="<c:url value='/resources/font-awesome/css/font-awesome.css'/>" rel="stylesheet" />
+      <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
    </head>
-   <body style="background:#F7F7F7;">
-      <div class="">
-         <a class="hiddenanchor" id="toregister"></a>
-         <a class="hiddenanchor" id="tologin"></a>
-         <div id="wrapper">
-            <div id="login" class="animate form">
-               <section class="login_content">
-                  <form:form role="form" servletRelativeAction="/autenticar" method="post">
-                     <h1>Login</h1>
-                     <c:if test="${!empty mensagemSucesso}">
-	                     <div class="alert alert-success alert-dismissible fade in" role="alert">
-			                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-			                  </button>
-			                  <span class="glyphicon glyphicon-ok-sign"></span><strong>&nbsp;Sucesso!&nbsp;</strong>&nbsp;<c:out value="${mensagemSucesso}"/>
-	                     </div>
-	                  </c:if>
-	                  <c:if test="${!empty mensagemErro}">
-	                     <div class="alert alert-danger alert-dismissible fade in" role="alert">
-		                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-		                     </button>
-		                     <span class="glyphicon glyphicon-warning-sign"></span><strong>&nbsp;Erro!&nbsp;</strong><c:out value="${mensagemErro}"/>
-	                     </div>
-	                  </c:if>
-                     <div>
-                        <input type="email" class="form-control" placeholder="E-mail" name="login" required/>
-                     </div>
-							<div>
-							   <input type="password" class="form-control" placeholder="Senha" name="senha" required maxlength="10"/>
-							</div>
-                     <div>
-								<input type="submit" class="btn btn-default" value="Entrar"/>
-								<a class="reset_pass" href="#">Esqueceu a senha?</a>
-							</div>
-                     <div class="clearfix"></div>
-							<div class="separator">
-								<div>
-									<h1>DPJ Manager</h1>
-									<p>©2015 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
-								</div>
-							</div>
-                  </form:form>
-						<!-- form -->
-               </section>
-               <!-- content -->
+   <body>
+      <div id="loginbox">
+         <form:form id="loginform" class="form-vertical" servletRelativeAction="/autenticar" method="post">
+            <div class="control-group normal_text">
+               <h3><img src="<c:url value='/resources/img/logo.png'/>" alt="Logo" /></h3>
             </div>
-         </div>
-      </div>
+            <div class="control-group">
+               <div class="controls">
+                  <c:if test="${!empty mensagemErro}">
+                  <div class="alert alert-error alert-block"><a class="close" data-dismiss="alert" href="#">×</a>
+                     <h4 class="alert-heading">Erro!</h4>
+                     ${mensagemErro}
+                  </div>
+                  </c:if>
+                  <c:if test="${!empty mensagemSucesso}">
+                     <div class="alert alert-success alert-block"><a class="close" data-dismiss="alert" href="#">×</a>
+                        <h4 class="alert-heading">Sucesso!</h4>
+                        ${mensagemSucesso}
+                     </div>
+                  </c:if>
+                  <div class="main_input_box">
+                     <span class="add-on bg_lg">
+                        <i class="icon-user"></i>
+                     </span>
+                     <input type="email" placeholder="E-mail" required name="login" maxlength="150"/>
+                  </div>
+               </div>
+            </div>
+            <div class="control-group">
+               <div class="controls">
+                  <div class="main_input_box">
+                     <span class="add-on bg_ly">
+                        <i class="icon-lock"></i>
+                     </span>
+                     <input type="password" placeholder="Senha" required name="senha" maxlength="10"/>
+                  </div>
+               </div>
+            </div>
+            <div class="form-actions">
+               <span class="pull-left"><a href="#" class="flip-link btn btn-info" id="to-recover">Esqueceu a senha?</a></span>
+               <span class="pull-right"><input type="submit" class="btn btn-success" value="Login" /></span>
+            </div>
+         </form:form>
+      </div>  
+      <script src="<c:url value='/resources/js/jquery.min.js'/>"></script>  
+      <script src="<c:url value='/resources/js/matrix.login.js'/>"></script> 
    </body>
 </html>

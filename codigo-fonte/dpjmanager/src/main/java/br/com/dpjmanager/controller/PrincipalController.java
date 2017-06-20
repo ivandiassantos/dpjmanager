@@ -1,3 +1,4 @@
+
 package br.com.dpjmanager.controller;
 
 import org.springframework.context.annotation.Scope;
@@ -6,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
-import br.com.dpjmanager.enums.PaginaRetorno;
+import br.com.dpjmanager.constantes.UrlRetorno;
 
 /**
  * Classe para controle de fluxo para a página principal.
@@ -18,16 +19,14 @@ import br.com.dpjmanager.enums.PaginaRetorno;
 public class PrincipalController
 {
 
-   public static final String URL_RETORNO_PAGINA_PRINCIPAL = "/restrito/principal";
-   
    /**
     * Retorna para a página principal.
     * 
     * @return {@link ModelAndView}
     */
-   @RequestMapping(value = URL_RETORNO_PAGINA_PRINCIPAL, method = RequestMethod.GET)
+   @RequestMapping(value = UrlRetorno.URL_PRINCIPAL, method = RequestMethod.GET)
    public ModelAndView principal()
    {
-      return new ModelAndView(PaginaRetorno.PAGINA_PRINCIPAL.getUrl());
+      return new ModelAndView(UrlRetorno.URL_PRINCIPAL);
    }
 }

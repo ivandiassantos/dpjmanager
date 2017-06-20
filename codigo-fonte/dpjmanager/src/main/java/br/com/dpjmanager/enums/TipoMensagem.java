@@ -5,7 +5,8 @@ public enum TipoMensagem
 {
    MENSAGEM_ERRO("mensagemErro"),
       MENSAGEM_ALERTA("mensagemAlerta"),
-      MENSAGEM_SUCESSO("mensagemSucesso");
+      MENSAGEM_SUCESSO("mensagemSucesso"),
+      MENSAGEM_INFORMATIVA("mensagemInformativa");
 
    private TipoMensagem(String nomeTipoMensagem)
    {

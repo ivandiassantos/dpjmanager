@@ -17,7 +17,8 @@ public enum ChaveMensagem
       ERRO_NOVA_SENHA_E_SUA_CONFIRMACAO_DEVEM_SER_IGUAIS("erro_nova_senha_e_sua_confirmacao_devem_ser_iguais"),
       ERRO_LOGIN_INVALIDO("erro_login_invalido"),
       ERRO_SENHA_ATUAL_NAO_CONFERE("erro_senha_atual_nao_confere"),
-      ERRO_NOME_PACOTE_EXISTENTE("nome_pacote_existente");
+      ERRO_NOME_PACOTE_EXISTENTE("nome_pacote_existente"),
+      INFORMACAO_PRIMEIRO_ACESSO_USUARIO("informacao_primeiro_acesso_usuario");
 
    private ChaveMensagem(String chave)
    {
@@ -26,6 +27,5 @@ public enum ChaveMensagem
 
    @Getter
    private String chave;
-
 
 }

@@ -83,17 +83,17 @@
 	</bean>
 
 	<!-- Configurações JPA -->
-	<bean id="rHourDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
-		destroy-method="close">
-		<property name="driverClass" value="oracle.jdbc.OracleDriver" />
-		<property name="jdbcUrl" value="jdbc:oracle:thin:@172.25.1.11:1521:PRD01" />
-		<property name="user" value="rhour" />
-		<property name="password" value="rhour" />
-		<property name="maxPoolSize" value="50" />
-		<property name="minPoolSize" value="10" />
-		<property name="maxStatements" value="100" />
-		<property name="testConnectionOnCheckout" value="true" />
-	</bean>
+<!-- 	<bean id="rHourDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" -->
+<!-- 		destroy-method="close"> -->
+<!-- 		<property name="driverClass" value="oracle.jdbc.OracleDriver" /> -->
+<!-- 		<property name="jdbcUrl" value="jdbc:oracle:thin:@172.25.1.11:1521:PRD01" /> -->
+<!-- 		<property name="user" value="rhour" /> -->
+<!-- 		<property name="password" value="rhour" /> -->
+<!-- 		<property name="maxPoolSize" value="10" /> -->
+<!-- 		<property name="minPoolSize" value="1" /> -->
+<!-- 		<property name="maxStatements" value="10" /> -->
+<!-- 		<property name="testConnectionOnCheckout" value="true" /> -->
+<!-- 	</bean> -->
 	
 	<bean id="dpjManagerDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
       destroy-method="close">
@@ -101,9 +101,9 @@
       <property name="jdbcUrl" value="jdbc:oracle:thin:@172.25.0.15:1521:des01" />
       <property name="user" value="dpjmanager" />
       <property name="password" value="dpjmanager" />
-      <property name="maxPoolSize" value="50" />
-      <property name="minPoolSize" value="10" />
-      <property name="maxStatements" value="100" />
+      <property name="maxPoolSize" value="10" />
+      <property name="minPoolSize" value="1" />
+      <property name="maxStatements" value="10" />
       <property name="testConnectionOnCheckout" value="true" />
    </bean>
    
@@ -113,15 +113,15 @@
       <property name="jdbcUrl" value="jdbc:oracle:thin:@172.25.1.11:1521:PRD01" />
       <property name="user" value="cqusrprdbsa" />
       <property name="password" value="cqusrprdbsa" />
-      <property name="maxPoolSize" value="50" />
-      <property name="minPoolSize" value="10" />
-      <property name="maxStatements" value="100" />
+      <property name="maxPoolSize" value="10" />
+      <property name="minPoolSize" value="1" />
+      <property name="maxStatements" value="10" />
       <property name="testConnectionOnCheckout" value="true" />
    </bean>
 
-	<bean id="transactionManagerRhour" class="org.springframework.orm.jpa.JpaTransactionManager">
-	  <property name="entityManagerFactory" ref="entityManagerFactoryRHour" />
-	</bean>
+<!-- 	<bean id="transactionManagerRhour" class="org.springframework.orm.jpa.JpaTransactionManager"> -->
+<!-- 	  <property name="entityManagerFactory" ref="entityManagerFactoryRHour" /> -->
+<!-- 	</bean> -->
 	<tx:annotation-driven transaction-manager="transactionManagerRhour" />
 	<bean id="transactionManagerDpjManager" class="org.springframework.orm.jpa.JpaTransactionManager">
      <property name="entityManagerFactory" ref="entityManagerFactoryDPJManager" />
@@ -134,12 +134,12 @@
    <tx:annotation-driven transaction-manager="transactionManagerCq" />
 
 	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
-	<bean id="entityManagerFactoryRHour" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="persistenceProviderClass" value="org.hibernate.jpa.HibernatePersistenceProvider" />
-		<property name="dataSource" ref="rHourDataSource" />
-		<property name="persistenceUnitName" value="rhourPU" />
-		<property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml" />
-	</bean>
+<!-- 	<bean id="entityManagerFactoryRHour" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"> -->
+<!-- 		<property name="persistenceProviderClass" value="org.hibernate.jpa.HibernatePersistenceProvider" /> -->
+<!-- 		<property name="dataSource" ref="rHourDataSource" /> -->
+<!-- 		<property name="persistenceUnitName" value="rhourPU" /> -->
+<!-- 		<property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml" /> -->
+<!-- 	</bean> -->
 	<bean id="entityManagerFactoryDPJManager" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
       <property name="persistenceProviderClass" value="org.hibernate.jpa.HibernatePersistenceProvider" />
       <property name="dataSource" ref="dpjManagerDataSource" />

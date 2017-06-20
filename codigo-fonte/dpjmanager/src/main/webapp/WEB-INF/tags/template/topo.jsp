@@ -1,21 +1,23 @@
-<!-- top navigation -->
-<div class="top_nav">
-   <div class="nav_menu">
-      <nav class="" role="navigation">
-         <div class="nav toggle">
-            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-         </div>
-         <ul class="nav navbar-nav navbar-right">
-            <li class="">
-               <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  <i class="fa fa-user"></i> <security:authentication property="principal.nomeUsuario" /> <span class=" fa fa-angle-down"></span>
-               </a>
-               <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
-                  <li><a href="#"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
-               </ul>
+<!--Header-part-->
+<div id="header">
+   <h1><a href="<c:url value='/restrito/principal'/>">DPJ Manager</a></h1>
+</div>
+<!--close-Header-part-->
+<!--top-Header-menu-->
+<div id="user-nav" class="navbar navbar-inverse">
+   <ul class="nav">
+      <li class="dropdown" id="profile-messages" >
+         <a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle">
+            <i class="icon icon-user"></i>
+            <span class="text"><security:authentication property="principal.nomeUsuario" /></span>
+            <b class="caret"></b>
+         </a>
+         <ul class="dropdown-menu">
+            <li>
+               <a href="<c:url value='/logout'/>"><i class="icon-key"></i> Sair</a>
             </li>
          </ul>
-      </nav>
-   </div>
+      </li>
+   </ul>
 </div>
-<!-- /top navigation -->
+<!--close-top-Header-menu-->

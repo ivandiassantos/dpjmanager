@@ -16,10 +16,6 @@ public abstract class DaoImpl
 
    @Setter
    @Getter
-   @PersistenceContext(unitName = "rhourPU")
-   private EntityManager entityManagerRhour;
-   @Setter
-   @Getter
    @PersistenceContext(unitName = "dpjManagerPU")
    private EntityManager entityManagerDpjManager;
    @Setter

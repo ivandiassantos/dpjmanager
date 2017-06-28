@@ -18,4 +18,5 @@ public interface OcorrenciaService
     * @return
     */
    List<OcorrenciaDTO> listaOcorrenciasHomologacao();
+
 }

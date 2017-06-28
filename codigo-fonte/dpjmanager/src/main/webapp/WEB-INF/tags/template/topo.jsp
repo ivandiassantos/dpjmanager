@@ -1,23 +1,50 @@
-<!--Header-part-->
-<div id="header">
-   <h1><a href="<c:url value='/restrito/principal'/>">DPJ Manager</a></h1>
-</div>
-<!--close-Header-part-->
-<!--top-Header-menu-->
-<div id="user-nav" class="navbar navbar-inverse">
-   <ul class="nav">
-      <li class="dropdown" id="profile-messages" >
-         <a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle">
-            <i class="icon icon-user"></i>
-            <span class="text"><security:authentication property="principal.nomeUsuario" /></span>
-            <b class="caret"></b>
+<div id="navbar" class="navbar navbar-default          ace-save-state">
+   <div class="navbar-container ace-save-state" id="navbar-container">
+      <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+         <span class="sr-only">Toggle sidebar</span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+      </button>
+      <div class="navbar-header pull-left">
+         <a href="<c:url value='/restrito/principal'/>" class="navbar-brand">
+            <small>
+               DPJ Manager
+            </small>
          </a>
-         <ul class="dropdown-menu">
-            <li>
-               <a href="<c:url value='/logout'/>"><i class="icon-key"></i> Sair</a>
+      </div>
+      <div class="navbar-buttons navbar-header pull-right" role="navigation">
+         <ul class="nav ace-nav">
+            <li class="light-blue dropdown-modal">
+               <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                  <span class="user-info">
+                     ${usuario.nomeUsuario}
+                  </span>
+                  <i class="ace-icon fa fa-caret-down"></i>
+               </a>
+               <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                  <li>
+                     <a href="#">
+                        <i class="ace-icon fa fa-cog"></i>
+                        Configura&ccedil;&otilde;es
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#">
+                        <i class="ace-icon fa fa-user"></i>
+                        Perfil
+                     </a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                     <a href="<c:url value='/logout'/>">
+                        <i class="ace-icon fa fa-power-off"></i>
+                        Sair
+                     </a>
+                  </li>
+               </ul>
             </li>
          </ul>
-      </li>
-   </ul>
+      </div>
+   </div><!-- /.navbar-container -->
 </div>
-<!--close-top-Header-menu-->

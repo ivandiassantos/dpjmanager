@@ -4,6 +4,7 @@ package br.com.dpjmanager.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.WebApplicationContext;
@@ -35,5 +36,17 @@ public class OcorrenciaController
    {
       return new ModelAndView(UrlRetorno.PAGINA_LISTAGEM_OCORRENCIAS_HOMOLOGACAO).addObject("listaOcorrenciasHomologacao",
          ocorrenciaService.listaOcorrenciasHomologacao());
+   }
+
+   /**
+    * Inicia a associação entre ocorrência e solicitação.
+    * 
+    * @param idOcorrencia
+    * @return
+    */
+   @RequestMapping(value = UrlRetorno.URL_INICIO_ASSOCIACAO_OCORRENCIA_SOLICITACAO, method = RequestMethod.GET)
+   public ModelAndView iniciaAssociacaoOcorrenciaHomologacao(@PathVariable("idOcorrencia") Long idOcorrencia)
+   {
+      return new ModelAndView();
    }
 }

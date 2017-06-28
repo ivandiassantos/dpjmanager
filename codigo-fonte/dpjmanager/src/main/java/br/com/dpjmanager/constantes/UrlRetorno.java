@@ -23,4 +23,6 @@ public class UrlRetorno
    public static final String URL_LISTAGEM_OCORRENCIAS_HOMOLOGACAO = "/homologacao/listaOcorrenciasHomologacao";
    public static final String PAGINA_LISTAGEM_OCORRENCIAS_HOMOLOGACAO = URL_PADRAO_OCORRENCIAS
       + URL_LISTAGEM_OCORRENCIAS_HOMOLOGACAO;
+   public static final String URL_INICIO_ASSOCIACAO_OCORRENCIA_SOLICITACAO =
+      "/homologacao/iniciaAssociacaoOcorrenciaSolicitacao/{idOcorrencia}";
 }

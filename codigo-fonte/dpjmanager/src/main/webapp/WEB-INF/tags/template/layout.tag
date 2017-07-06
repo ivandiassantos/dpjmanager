@@ -104,7 +104,10 @@
       <!-- ace scripts -->
       <script src="<c:url value='/resources/assets/js/ace-elements.min.js'/>"></script>
       <script src="<c:url value='/resources/assets/js/ace.min.js'/>"></script>
-      <script src="<c:url value='/resources/alpha/javascript/comum/alpha.js'/>"></script>
+      <script src="<c:url value='/resources/assets/js/jquery.dataTables.min.js'/>"></script>
+      <script src="<c:url value='/resources/assets/js/jquery.dataTables.bootstrap.min.js'/>"></script>
+      <script src="<c:url value='/resources/assets/js/dataTables.buttons.min.js'/>"></script>
+      <script src="<c:url value='/resources/assets/js/dpjmanager.js'/>"></script>
       <!-- inline scripts related to this page -->
       <script type="text/javascript">
          jQuery(function($) {

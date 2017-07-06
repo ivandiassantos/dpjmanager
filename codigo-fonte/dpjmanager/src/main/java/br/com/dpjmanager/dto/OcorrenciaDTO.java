@@ -1,6 +1,7 @@
 
 package br.com.dpjmanager.dto;
 
+import java.util.Date;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,6 +19,6 @@ public class OcorrenciaDTO
    private String idOcorrencia;
    private String descricao;
    private String situacao;
-   private String dataAbertura;
+   private Date dataAbertura;
 
 }
